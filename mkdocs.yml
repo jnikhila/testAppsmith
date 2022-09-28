@@ -1,0 +1,100 @@
+site_name: Test Appsmith
+site_description: Open-source, low-code platform to Build, ship, and maintain internal tools
+theme:
+  name: material
+  logo: assets/images/Appsmith-Logo.png
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.indexes
+    - header.autohide
+  palette:
+    - scheme: default
+      primary: orange
+      accent: grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: orange
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/images/favicon.png
+  custom_dir: docs/overrides
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+   - Home: index.md
+   - Getting Started:
+      - introduction.md
+      - Getting Started/start-building.md
+      - Self Hosting:
+        - Getting Started/setup/README.md
+        - Installation Guides:
+          - Getting Started/setup/installation-guides/README.md
+          - Docker:
+            - Getting Started/setup/installation-guides/docker/README.md
+            - Getting Started/setup/installation-guides/docker/migrate.md
+          - Kubernetes:
+            - Getting Started/setup/installation-guides/kubernetes/README.md
+            - Getting Started/setup/installation-guides/kubernetes/migrate-k8s.md
+          - Getting Started/setup/installation-guides/ansible.md
+          - Getting Started/setup/installation-guides/aws-ami.md
+          - Getting Started/setup/installation-guides/aws-ecs.md
+          - Getting Started/setup/installation-guides/cloudjiffy.md
+          - Getting Started/setup/installation-guides/digitalocean.md
+          - Getting Started/setup/installation-guides/heroku.md
+        - Installation Configuration:
+          - Getting Started/setup/instance-configuration/README.md    
+          - Authentication:
+            - Getting Started/setup/instance-configuration/authentication/README.md
+            - Open ID Connect:
+              - Getting Started/setup/instance-configuration/authentication/openid-connect-oidc/README.md
+              - Getting Started/setup/instance-configuration/authentication/openid-connect-oidc/auth0.md
+              - Getting Started/setup/instance-configuration/authentication/openid-connect-oidc/okta.md
+              - Getting Started/setup/instance-configuration/authentication/openid-connect-oidc/ping-identity.md
+              - Getting Started/setup/instance-configuration/authentication/openid-connect-oidc/active-directory.md
+      - Core Concepts:
+        - Building UI:
+          - Core Concepts/building-ui/README.md
+          - Designing an Application:
+            - Core Concepts/building-ui/designing-an-application/app-theming.md
+      - Advanced Concepts:
+        - Custom Authentication:
+            - Advanced Concepts/how-to-implement-custom-authentication-on-appsmith.md
+            - More:
+                - Advanced Concepts/more/backup-restore.md
