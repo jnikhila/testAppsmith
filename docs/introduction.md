@@ -22,6 +22,7 @@ You can build anything from simple CRUD apps to complicated multi-step workflows
 {% embed url="https://youtu.be/Dxe_NzdGzL4" %}
 ![YouTube Video](https://youtu.be/Dxe_NzdGzL4)
 
+ <object data="https://www.youtube.com/embed/Dxe_NzdGzL4?autoplay=1" width='560px' height='315px'></object> 
 ## **Get Started**
 
 There are two ways of using Appsmith:
