@@ -1,0 +1,2019 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="We provide an installation script that will help you configure Appsmith & deploy your app on a Kubernetes cluster">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>Kubernetes - Test Appsmith</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e38d1c16.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link rel="stylesheet" href="../../../../assets/stylesheets/main.7073df5a.min.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kubernetes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://appsmith.com">
+     <strong>Appsmith Cloud</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://www.appsmith.com/blog-categories/tutorial">
+   <strong>Tutorials</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://community.appsmith.com/">
+    <strong>Forum</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://github.com/appsmithorg/appsmith">
+    <strong>GitHub</strong>
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Test Appsmith" class="md-header__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Test Appsmith
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Kubernetes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Test Appsmith" class="md-nav__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    Test Appsmith
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../introduction/" class="md-nav__link">
+        What is Appsmith?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../start-building/" class="md-nav__link">
+        Build Your First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Self Hosting</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Self Hosting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Self Hosting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Installation Guides</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Guides" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_2" type="checkbox" id="__nav_2_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../docker/">Docker</a>
+          
+            <label for="__nav_2_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/migrate/" class="md-nav__link">
+        Migrate from Multi-Container setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_3" type="checkbox" id="__nav_2_3_2_3" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index md-nav__link--active">
+          <a href="./">Kubernetes</a>
+          
+            <label for="__nav_2_3_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="migrate-k8s/" class="md-nav__link">
+        Migrate from multi-container setup (k8s)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-ami/" class="md-nav__link">
+        AWS AMI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-ecs/" class="md-nav__link">
+        AWS ECS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudjiffy/" class="md-nav__link">
+        CloudJiffy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digitalocean/" class="md-nav__link">
+        DigitalOcean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../heroku/" class="md-nav__link">
+        Heroku
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../instance-configuration/">Installation Configuration</a>
+          
+            <label for="__nav_2_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2" type="checkbox" id="__nav_2_3_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../instance-configuration/authentication/">Authentication</a>
+          
+            <label for="__nav_2_3_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Authentication" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2_2" type="checkbox" id="__nav_2_3_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../instance-configuration/authentication/openid-connect-oidc/">Open ID Connect</a>
+          
+            <label for="__nav_2_3_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Open ID Connect" data-md-level="5">
+        <label class="md-nav__title" for="__nav_2_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Open ID Connect
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instance-configuration/authentication/openid-connect-oidc/auth0/" class="md-nav__link">
+        Auth0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instance-configuration/authentication/openid-connect-oidc/okta/" class="md-nav__link">
+        Okta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instance-configuration/authentication/openid-connect-oidc/ping-identity/" class="md-nav__link">
+        Ping Identity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instance-configuration/authentication/openid-connect-oidc/active-directory/" class="md-nav__link">
+        Active Directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Core Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Core Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Core%20Concepts/building-ui/">Building UI</a>
+          
+            <label for="__nav_2_4_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Building UI" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Building UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_2" type="checkbox" id="__nav_2_4_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_2">
+          Designing an Application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Designing an Application" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Designing an Application
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Core%20Concepts/building-ui/designing-an-application/app-theming/" class="md-nav__link">
+        App Theming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Advanced Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1">
+          Custom Authentication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Authentication" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Advanced%20Concepts/how-to-implement-custom-authentication-on-appsmith/" class="md-nav__link">
+        How to implement custom authentication on Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1_2" type="checkbox" id="__nav_2_5_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1_2">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Advanced%20Concepts/more/backup-restore/" class="md-nav__link">
+        Migrate Applications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-appsmith-using-helm-charts" class="md-nav__link">
+    Installing Appsmith using Helm Charts
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Appsmith using Helm Charts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    Installing the Chart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    Uninstalling the Chart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+    <nav class="md-nav" aria-label="Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-parameters" class="md-nav__link">
+    Global parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-parameters" class="md-nav__link">
+    Common parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appsmith-image-parameters" class="md-nav__link">
+    Appsmith Image parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appsmith-deployment-parameters" class="md-nav__link">
+    Appsmith deployment parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appsmith-namespace-parameters" class="md-nav__link">
+    Appsmith namespace parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appsmith-service-account-parameters" class="md-nav__link">
+    Appsmith service account parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traffic-exposure-parameters" class="md-nav__link">
+    Traffic Exposure Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-parameters" class="md-nav__link">
+    Persistence parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-update-charts-image" class="md-nav__link">
+    Auto-update chart's image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appsmith-configuration" class="md-nav__link">
+    Appsmith configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expose-appsmith" class="md-nav__link">
+    Expose Appsmith
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+
+
+<h1 id="kubernetes">Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
+<h2 id="installing-appsmith-using-helm-charts">Installing Appsmith using Helm Charts<a class="headerlink" href="#installing-appsmith-using-helm-charts" title="Permanent link">&para;</a></h2>
+<p>This chart bootstraps an <a href="https://github.com/appsmithorg/appsmith">Appsmith</a> deployment on a <a href="https://github.com/appsmithorg/appsmith/blob/release/deploy/helm/kubernetes.io">Kubernetes</a> cluster using <a href="https://helm.sh">Helm</a> package manager.</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Install the <a href="https://helm.sh/docs/intro/install/">Helm package manager</a>.</li>
+<li>Ensure <code>kubectl</code> is installed and configured to connect to your cluster.</li>
+<li>Install <a href="https://kubernetes.io/vi/docs/tasks/tools/install-kubectl/">kubectl</a>.</li>
+<li>Minikube: <a href="https://minikube.sigs.k8s.io/docs/handbook/kubectl/">Setup Kubectl</a>.</li>
+<li>Google Cloud Kubernetes: <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl">Configuring cluster access for kubectl</a></li>
+<li>AWS EKS: <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">Create a kubeconfig for Amazon EKS</a></li>
+<li>Microk8s: <a href="https://microk8s.io/docs/working-with-kubectl">Working with kubectl</a></li>
+<li>Please ensure you have a default storage class running on your cluster. Please follow one of the below guidelines to enable your default storage class -</li>
+<li>Minikube: <a href="https://kubernetes.io/docs/tutorials/hello-minikube/#enable-addons">Enable addon default-storageclass</a></li>
+<li>Google Cloud Kubernetes: <a href="https://cloud.google.com/anthos/clusters/docs/on-prem/1.3/how-to/default-storage-class">Setting up default storage class on GKE</a></li>
+<li>AWS EKS: <a href="https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html">Create default storage class</a></li>
+<li>Microk8s: <a href="https://microk8s.io/docs/command-reference#heading--microk8s-enable">Enable storage</a></li>
+<li>Kubernetes NGINX Ingress Controller should be enabled on your cluster by default. Please make sure that you install the correct version for your cluster</li>
+<li>Minikube: <a href="https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/">Set up Ingress on Minikube with the NGINX Ingress Controller</a></li>
+<li>Google Cloud Kubernetes: <a href="https://kubernetes.github.io/ingress-nginx/deploy/#gce-gke">Ingress with NGINX controller on Google Kubernetes Engine</a></li>
+<li>AWS EKS: <a href="https://kubernetes.github.io/ingress-nginx/deploy/#network-load-balancer-nlb">Install NGINX Controller for AWS EKS</a></li>
+<li>Microk8s: <a href="https://microk8s.io/docs/addon-ingress">Add on: Ingress</a></li>
+</ul>
+<p _="%" endhint="endhint">{% hint style="warning" %}
+Note: By default, the ingress controller will not have data compression enabled. You can enable it by following the steps listed in the <a href="./#nginx-ingress-controller-compression-gzip">Nginx ingress controller compression</a> section.</p>
+<h3 id="installing-the-chart">Installing the Chart<a class="headerlink" href="#installing-the-chart" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Add Appsmith into your repository using Helm.</li>
+</ol>
+<pre><code>helm repo add appsmith https://helm.appsmith.com
+
+helm repo update
+</code></pre>
+<p>2. Install the chart with the <mark style="color:orange;"><code>appsmith</code></mark> release.</p>
+<pre><code>helm install appsmith/appsmith --generate-name
+</code></pre>
+<p>The command deploys the Appsmith application on the Kubernetes cluster in the default configuration. The <a href="https://github.com/appsmithorg/appsmith/tree/release/deploy/helm#paramters">Parameters</a> section lists the configurable parameters during installation.</p>
+<h3 id="uninstalling-the-chart">Uninstalling the Chart<a class="headerlink" href="#uninstalling-the-chart" title="Permanent link">&para;</a></h3>
+<p>To uninstall the <mark style="color:orange;"><code>appsmith</code></mark> release:</p>
+<pre><code>helm list
+NAME                       NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+appsmith-1631069261        default         1               2021-09-09 11:24:40.152766 +0700 +07    deployed        appsmith-1.3.0  1.16.0
+
+helm uninstall appsmith-1631069261
+</code></pre>
+<p>The command uninstalls the release and removes all Kubernetes resources associated with the chart.</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<h4 id="global-parameters">Global parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.namespaceOverride</code></td>
+<td>Override the namespace for resource deployed by the chart</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.storageClass</code></td>
+<td>Global StorageClass for Persistent Volume(s)</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="common-parameters">Common parameters<a class="headerlink" href="#common-parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>String to fully override <code>appsmith.name</code> template</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>containerName</code></td>
+<td>Specify container's name running in the pods</td>
+<td><code>"appsmith"</code></td>
+</tr>
+<tr>
+<td><code>commonLabels</code></td>
+<td>Labels to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>commonAnnotations</code></td>
+<td>Annotations to add to all deployed objects</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="appsmith-image-parameters">Appsmith Image parameters<a class="headerlink" href="#appsmith-image-parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image.registry</code></td>
+<td>Appsmith image registry</td>
+<td><code>index.docker.io</code></td>
+</tr>
+<tr>
+<td><code>image.repository</code></td>
+<td>Appsmith image repository</td>
+<td><code>appsmith/appsmith-editor</code></td>
+</tr>
+<tr>
+<td><code>image.tag</code></td>
+<td>Appsmith image tag</td>
+<td><code>latest</code></td>
+</tr>
+<tr>
+<td><code>image.pullPolicy</code></td>
+<td>Appsmith image pull policy</td>
+<td><code>IfNotPresent</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="appsmith-deployment-parameters">Appsmith deployment parameters<a class="headerlink" href="#appsmith-deployment-parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strategyType</code></td>
+<td>Appsmith deployment strategy type</td>
+<td><code>RollingUpdate</code></td>
+</tr>
+<tr>
+<td><code>schedulerName</code></td>
+<td>Alternate scheduler</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>podAnnotations</code></td>
+<td>Annotations for Appsmith pods</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podSecurityContext</code></td>
+<td>Appsmith pods security context</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>securityContext</code></td>
+<td>Set security context</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>resources.limits</code></td>
+<td>The resources limits for the Appsmith container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>resources.requests</code></td>
+<td>The requested resources for the Appsmith container</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>nodeSelector</code></td>
+<td>Node labels for pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>tolerations</code></td>
+<td>Tolerations for pod assignment</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>affinity</code></td>
+<td>Affinity fod pod assignment</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="appsmith-namespace-parameters">Appsmith namespace parameters<a class="headerlink" href="#appsmith-namespace-parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>namespace.create</code></td>
+<td>Enable creation of <code>Namespace</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="appsmith-service-account-parameters">Appsmith service account parameters<a class="headerlink" href="#appsmith-service-account-parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Enable creation of <code>ServiceAccount</code> for Appsmith pods</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>Name of the created <code>ServiceAccount</code> . If not set, a name is generated using the appsmith.fullname template</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Additional service account annotations</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="traffic-exposure-parameters">Traffic Exposure Parameters<a class="headerlink" href="#traffic-exposure-parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>service.type</code></td>
+<td>Appsmith service type</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>service.port</code></td>
+<td>Appsmith service port</td>
+<td><code>80</code></td>
+</tr>
+<tr>
+<td><code>service.portName</code></td>
+<td>Appsmith service port name</td>
+<td><code>appsmith</code></td>
+</tr>
+<tr>
+<td><code>service.nodePort</code></td>
+<td>Appsmith service node port to expose to expose</td>
+<td><code>8000</code></td>
+</tr>
+<tr>
+<td><code>service.clusterIP</code></td>
+<td>Appsmith service Cluster</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerIP</code></td>
+<td>Appsmith service Load Balancer IP</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>service.loadBalancerSourceRanges</code></td>
+<td>Appsmith service Load Balancer sources</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>service.annotations</code></td>
+<td>Additional custom annotations for Appsmith service</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>ingress.enabled</code></td>
+<td>Enable ingress record generation for Appsmith</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingress.hosts</code></td>
+<td>An array of hosts to be covered with the ingress record</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.tls</code></td>
+<td>Enable TLS configuration for the hosts defined at <code>ingress.hosts</code> parameter</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingress.secrets</code></td>
+<td>Custom TLS certificates as secrets</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.certManager</code></td>
+<td>Enable ingress to use TLS certificates provided by Cert Manager</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ingress.certManagerTls</code></td>
+<td>Specify TLS secret resources created by Cert Manager</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>ingress.className</code></td>
+<td>Configure Ingress class that being used in ingress resource</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="persistence-parameters">Persistence parameters<a class="headerlink" href="#persistence-parameters" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>persistence.enabled</code></td>
+<td>Enable persistence using Persistent Volume Claims</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>persistence.storageClass</code></td>
+<td>Persistent Volume storage class</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>persistence.annotations</code></td>
+<td>Additional custom annotations for the PVC</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistence.localStorage</code></td>
+<td>Enable persistent volume using local storage</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>persistence.storagePath</code></td>
+<td>Local storage path</td>
+<td><code>/tmp/hostpath_pv</code></td>
+</tr>
+<tr>
+<td><code>persistence.localCluster</code></td>
+<td>Local running cluster to provide storage space</td>
+<td><code>[minikube]</code></td>
+</tr>
+<tr>
+<td><code>persistence.accessModes</code></td>
+<td>Persistent Volume access modes</td>
+<td><code>[ReadWriteOnce]</code></td>
+</tr>
+<tr>
+<td><code>persistence.size</code></td>
+<td>Persistent Volume size</td>
+<td><code>10Gi</code></td>
+</tr>
+<tr>
+<td><code>storageClass.enabled</code></td>
+<td>Enable Storage Class configuration</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>storageClass.defaultClass</code></td>
+<td>Create default Storage Class</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>storageClass.bindingMode</code></td>
+<td>Binding mode for Persistent Volume Claims using Storage Class</td>
+<td><code>Immediate</code></td>
+</tr>
+<tr>
+<td><code>storageClass.allowVolumeExpansion</code></td>
+<td>Allow expansion of Persistent Volume Claims using Storage Class</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>storageClass.reclaimPolicy</code></td>
+<td>Configure the retention of the dynamically created Persistent Volume</td>
+<td><code>Delete</code></td>
+</tr>
+<tr>
+<td><code>storageClass.provisioner</code></td>
+<td>Storage Class provisioner</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>storageClass.annotations</code></td>
+<td>Additional storage class annotations</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storageClass.mountOptions</code></td>
+<td>Mount options used by Persistent Volumes</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>storageClass.parameters</code></td>
+<td>Storage Class parameters</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="auto-update-charts-image">Auto-update chart's image<a class="headerlink" href="#auto-update-charts-image" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autoupdate.enabled</code></td>
+<td>Enable auto update Helm chart's image</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>autoupdate.scheduler</code></td>
+<td>Schedule time to run cron job to update image</td>
+<td><code>"0 * * * *"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Specify each parameter using <code>--set key=value[,key=value]</code> argument to helm install. For example:</p>
+<pre><code>helm install \
+--set persistence.storageClass=appsmith-pv \
+  stable-appsmith/appsmith --generate-name
+</code></pre>
+<p>The above command deploys the Appsmith application and configures the application to use the storage class name<code>appsmith-pv</code>.</p>
+<p>Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example:</p>
+<pre><code>helm install -f values.yaml stable-appsmith/appsmith --generate-name
+</code></pre>
+<p><em><strong>Tip</strong>: You can use the default</em> <a href="https://github.com/appsmithorg/appsmith/blob/release/deploy/helm/values.yaml"><em>values.yaml</em></a> <em>as a starting point for configuring this way.</em></p>
+<h4 id="appsmith-configuration">Appsmith configuration<a class="headerlink" href="#appsmith-configuration" title="Permanent link">&para;</a></h4>
+<p>To change Appsmith configurations, you can update the <code>values.yaml</code> file (the available configurations are listed below).</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>applicationConfig.APPSMITH_OAUTH2_GOOGLE_CLIENT_ID</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_OAUTH2_GOOGLE_CLIENT_SECRET</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_OAUTH2_GITHUB_CLIENT_ID</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_OAUTH2_GITHUB_CLIENT_SECRET</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_CLIENT_LOG_LEVEL</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_GOOGLE_MAPS_API_KEY</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MAIL_ENABLED</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MAIL_HOST</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MAIL_PORT</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MAIL_USERNAME</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MAIL_PASSWORD</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MAIL_FROM</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_REPLY_TO</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MAIL_SMTP_AUTH</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MAIL_SMTP_TLS_ENABLED</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_DISABLE_TELEMETRY</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_RECAPTCHA_SITE_KEY</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_RECAPTCHA_SECRET_KEY</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_RECAPTCHA_ENABLED</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_MONGODB_URI</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_REDIS_URL</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_ENCRYPTION_PASSWORD</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_ENCRYPTION_SALT</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>applicationConfig.APPSMITH_CUSTOM_DOMAIN</code></td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<p>For example, to change the encryption salt configuration, you can run the following command:</p>
+<pre><code>helm install \
+--set applicationConfig.APPSMITH_ENCRYPTION_SALT=123 \
+  stable-appsmith/appsmith --generate-name
+</code></pre>
+<h2 id="expose-appsmith">Expose Appsmith<a class="headerlink" href="#expose-appsmith" title="Permanent link">&para;</a></h2>
+<ul>
+<li>If you wish to publish your Appsmith to the world through the Internet, you will need to setup the Ingress controller firstly. Please refer to the section <strong>Kubernetes NGINX Ingress Controller</strong> in the <a href="./#prerequisites">Prerequisites</a>.</li>
+<li>
+<p>In case of you have not install the Helm chart yet, you can run the below command to install it with exposing Appsmith:</p>
+<p><code>helm install appsmith/appsmith --generate-name \
+  --set ingress.enabled=true \
+  --set ingress.annotations."kubernetes\.io/ingress\.class"=nginx \
+  --set service.type=ClusterIP</code>
+*   If you have installed Appsmith Helm chart, please run the <code>helm upgrade</code> command to upgrade the existing installation</p>
+<p>```
+helm upgrade --set ingress.enabled=true appsmith appsmith/appsmith</p>
+<h1 id="or-this-command-if-you-are-using-valuesyaml-file">Or this command if you are using values.yaml file<a class="headerlink" href="#or-this-command-if-you-are-using-valuesyaml-file" title="Permanent link">&para;</a></h1>
+<p>helm upgrade --values values.yaml appsmith appsmith/appsmith
+```</p>
+</li>
+</ul>
+<h2 id="updating-appsmith">Updating Appsmith<a class="headerlink" href="#updating-appsmith" title="Permanent link">&para;</a></h2>
+<h3 id="auto-update">Auto Update<a class="headerlink" href="#auto-update" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>In the default Appsmith helm installation the auto-update is disabled (Recommended). You have the option to enable auto-update for your Appsmith helm deployment by either:</p>
+<ul>
+<li>Setting <code>autoupdate.enabled</code> to <code>true</code> in the <code>values.yaml</code> file, if you are using the values file.</li>
+</ul>
+<p><code>helm upgrade --values values.yaml appsmith appsmith/appsmith</code></p>
+<ul>
+<li>By passing the argument <code>--set autoupdate.enabled=true</code> to the helm install/upgrade command.</li>
+</ul>
+<p><code>helm install appsmith/appsmith --generate-name \
+    --set ingress.enabled=true \
+    --set ingress.annotations."kubernetes\.io/ingress\.class"=nginx \
+    --set service.type=ClusterIP \
+    --set autoupdate.enabled=true</code></p>
+</li>
+</ul>
+<h3 id="manual-update">Manual Update<a class="headerlink" href="#manual-update" title="Permanent link">&para;</a></h3>
+<ul>
+<li>To manually update the Appsmith container image to the latest release, run the command: <code>kubectl rollout restart statefulset appsmith</code></li>
+</ul>
+<h2 id="nginx-ingress-controller-compression-gzip">Nginx ingress controller compression (Gzip)<a class="headerlink" href="#nginx-ingress-controller-compression-gzip" title="Permanent link">&para;</a></h2>
+<p>In the default installation, the Nginx ingress controller will not have the data compression configured. Please follow the following steps to enable it.</p>
+<ul>
+<li>Edit the <code>configMap</code> for <code>ingress-nginx-controller</code> by using the below command</li>
+</ul>
+<pre><code>kubectl edit configmap -n ingress-nginx ingress-nginx-controller
+</code></pre>
+<ul>
+<li>
+<p>Add the following to the data section.\</p>
+<p><code>yaml
+data: # ADD IF NOT PRESENT
+  use-gzip: "true" # ENABLE GZIP COMPRESSION
+  gzip-types: "*" # SPECIFY MIME TYPES TO COMPRESS ("*" FOR ALL)</code></p>
+</li>
+</ul>
+<p _="%" endhint="endhint">{% hint style="warning" %}
+The Nginx controller will automatically update after saving (<code>:wq!</code>) the above changes.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>If you encounter any errors during this process, check out our guide on <a href="../../../../help-and-support/troubleshooting-guide/deployment-errors.md">debugging deployment errors</a>. If you are still facing any issues, please reach out to <a href="mailto:support@appsmith.com">support@appsmith.com</a> or join our <a href="https://discord.com/invite/rBTTVJp">Discord Server</a> to speak to the Appsmith team directly!</p>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../instance-configuration/#configuring-kubernetes-installations">Configuring Self Hosted Instances</a></li>
+<li><a href="../../instance-management/">Managing the Appsmith instance</a></li>
+<li><a href="../../../../learning-and-resources/tutorials/">Tutorials</a></li>
+</ul>
+
+
+
+
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../docker/migrate/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Migrate from Multi-Container setup" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Migrate from Multi-Container setup
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="migrate-k8s/" class="md-footer__link md-footer__link--next" aria-label="Next: Migrate from multi-container setup (k8s)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Migrate from multi-container setup (k8s)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+  
+      <script src="../../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  <script src="../../../../assets/javascripts/bundle.d665d539.min.js"></script>
+
+  </body>
+</html>

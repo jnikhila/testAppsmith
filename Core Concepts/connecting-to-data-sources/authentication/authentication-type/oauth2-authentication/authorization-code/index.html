@@ -1,0 +1,1675 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open-source, low-code platform to Build, ship, and maintain internal tools">
+      
+      
+      
+      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>Authorization Code - Test Appsmith</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.e38d1c16.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.7073df5a.min.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#authorization-code" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://appsmith.com">
+     <strong>Appsmith Cloud</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://www.appsmith.com/blog-categories/tutorial">
+   <strong>Tutorials</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://community.appsmith.com/">
+    <strong>Forum</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://github.com/appsmithorg/appsmith">
+    <strong>GitHub</strong>
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../../.." title="Test Appsmith" class="md-header__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Test Appsmith
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authorization Code
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../../.." title="Test Appsmith" class="md-nav__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    Test Appsmith
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../introduction/" class="md-nav__link">
+        What is Appsmith?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/start-building/" class="md-nav__link">
+        Build Your First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../../Getting%20Started/setup/">Self Hosting</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Self Hosting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Self Hosting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../../Getting%20Started/setup/installation-guides/">Installation Guides</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Guides" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_2" type="checkbox" id="__nav_2_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../../Getting%20Started/setup/installation-guides/docker/">Docker</a>
+          
+            <label for="__nav_2_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/installation-guides/docker/migrate/" class="md-nav__link">
+        Migrate from Multi-Container setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_3" type="checkbox" id="__nav_2_3_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../../Getting%20Started/setup/installation-guides/kubernetes/">Kubernetes</a>
+          
+            <label for="__nav_2_3_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/installation-guides/kubernetes/migrate-k8s/" class="md-nav__link">
+        Migrate from multi-container setup (k8s)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/installation-guides/ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/installation-guides/aws-ami/" class="md-nav__link">
+        AWS AMI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/installation-guides/aws-ecs/" class="md-nav__link">
+        AWS ECS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/installation-guides/cloudjiffy/" class="md-nav__link">
+        CloudJiffy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/installation-guides/digitalocean/" class="md-nav__link">
+        DigitalOcean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/installation-guides/heroku/" class="md-nav__link">
+        Heroku
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../../Getting%20Started/setup/instance-configuration/">Installation Configuration</a>
+          
+            <label for="__nav_2_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2" type="checkbox" id="__nav_2_3_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../../Getting%20Started/setup/instance-configuration/authentication/">Authentication</a>
+          
+            <label for="__nav_2_3_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Authentication" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2_2" type="checkbox" id="__nav_2_3_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/">Open ID Connect</a>
+          
+            <label for="__nav_2_3_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Open ID Connect" data-md-level="5">
+        <label class="md-nav__title" for="__nav_2_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Open ID Connect
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/auth0/" class="md-nav__link">
+        Auth0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/okta/" class="md-nav__link">
+        Okta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/ping-identity/" class="md-nav__link">
+        Ping Identity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/active-directory/" class="md-nav__link">
+        Active Directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Core Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Core Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../../building-ui/">Building UI</a>
+          
+            <label for="__nav_2_4_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Building UI" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Building UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_2" type="checkbox" id="__nav_2_4_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_2">
+          Designing an Application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Designing an Application" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Designing an Application
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../building-ui/designing-an-application/app-theming/" class="md-nav__link">
+        App Theming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Advanced Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1">
+          Custom Authentication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Authentication" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Advanced%20Concepts/how-to-implement-custom-authentication-on-appsmith/" class="md-nav__link">
+        How to implement custom authentication on Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1_2" type="checkbox" id="__nav_2_5_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1_2">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../Advanced%20Concepts/more/backup-restore/" class="md-nav__link">
+        Migrate Applications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#integrate-with-dropbox" class="md-nav__link">
+    Integrate with Dropbox
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrate with Dropbox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-endpoint" class="md-nav__link">
+    User Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-authenticated-api" class="md-nav__link">
+    Configure Authenticated API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-files" class="md-nav__link">
+    Upload Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-query" class="md-nav__link">
+    Create Query
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-headers-to-authenticated-api" class="md-nav__link">
+    Add Headers to Authenticated API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-headers-to-api" class="md-nav__link">
+    Add Headers to API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-widget" class="md-nav__link">
+    Add Widget
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrate-with-google-docs" class="md-nav__link">
+    Integrate with Google Docs
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrate with Google Docs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-endpoint_1" class="md-nav__link">
+    User Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-authenticate-api" class="md-nav__link">
+    Configure Authenticate API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrate-with-zoho-campaigns" class="md-nav__link">
+    Integrate with Zoho Campaigns
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrate with Zoho Campaigns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-endpoint_2" class="md-nav__link">
+    User Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-authenticated-api_1" class="md-nav__link">
+    Configure Authenticated API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-settings" class="md-nav__link">
+    Additional Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-authentication-parameters" class="md-nav__link">
+    Custom Authentication Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-authentication" class="md-nav__link">
+    Client Authentication
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-settings" class="md-nav__link">
+    Advanced Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#send-scope-with-refresh-token" class="md-nav__link">
+    Send Scope with Refresh Token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send-client-credentials-with-on-refresh-token" class="md-nav__link">
+    Send Client Credentials with (on Refresh Token)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+
+
+<h1 id="authorization-code">Authorization Code<a class="headerlink" href="#authorization-code" title="Permanent link">&para;</a></h1>
+<p>An <a href="https://oauth.net/2/grant-types/authorization-code/">authorization code</a> is a temporary code authorized by an authorization server. You can get an <a href="https://oauth.net/2/access-tokens/">access token</a> in exchange for an authorization code. Once you get an <a href="https://oauth.net/2/access-tokens/">access token</a>, you can use it to access the resources or perform actions on behalf of the user.</p>
+<p>In Appsmith, you can achieve this by setting up an <code>Authenticated API</code> and configuring it to use the <code>Authorization Code</code> as the grant type.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/YfdK3t2r5Co">https://youtu.be/YfdK3t2r5Co</a>" %}
+How to select an authorization code?</p>
+<h2 id="integrate-with-dropbox">Integrate with Dropbox<a class="headerlink" href="#integrate-with-dropbox" title="Permanent link">&para;</a></h2>
+<p>Let’s take an example to understand the authorization code integration with Dropbox. You have a portal app built on Appsmith, and your app users use it to upload their profiles. You already have a backend application integrated with Dropbox and want to use Dropbox to store the profiles. To achieve this, you have to create an Authenticated API and configure it to connect with Dropbox.</p>
+<h3 id="user-endpoint">User Endpoint<a class="headerlink" href="#user-endpoint" title="Permanent link">&para;</a></h3>
+<p>You’ll have to connect to a user endpoint on the Dropbox platform to perform API calls. Navigate to the <a href="https://www.dropbox.com/developers/documentation/http/documentation">exhaustive list of user endpoints</a> used by Dropbox for different API calls.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+Dropbox provides <a href="https://www.dropbox.com/developers/documentation/http/documentation">details on headers or the content type</a> that you will have to add to your requests.</p>
+<h3 id="configure-authenticated-api">Configure Authenticated API<a class="headerlink" href="#configure-authenticated-api" title="Permanent link">&para;</a></h3>
+<p>For uploading files configure <code>Authenticated API</code> as per below table:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Appsmith</strong></th>
+<th><strong>Dropbox</strong></th>
+<th><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>URL</strong></td>
+<td>User Endpoint</td>
+<td><code>https://content.dropboxapi.com/</code></td>
+</tr>
+<tr>
+<td><strong>Headers</strong></td>
+<td><code>Dropbox-API-Arg</code></td>
+<td>{"path": "/{{<strong><code>&lt;</code></strong><code>pick the file path from widget like``</code><strong><code>FilePicker</code></strong><code>&gt;</code>}}","mode" : "add","autorename" : true, "mute" : false,"strict_conflict" :false}</td>
+</tr>
+<tr>
+<td><strong>Headers</strong></td>
+<td><code>Content-Type</code></td>
+<td><code>application/octet-stream</code></td>
+</tr>
+<tr>
+<td><strong>Authentication Type</strong></td>
+<td>NA</td>
+<td>OAuth 2.0</td>
+</tr>
+<tr>
+<td><strong>Grant Type</strong></td>
+<td>NA</td>
+<td>Authorization Code</td>
+</tr>
+<tr>
+<td><strong>Access Token URL</strong></td>
+<td>Token Endpoint</td>
+<td><code>https://api.dropboxapi.com/oauth2/token</code></td>
+</tr>
+<tr>
+<td><strong>Client ID</strong></td>
+<td>Navigate to <a href="https://www.dropbox.com/developers/apps?_tk=pilot_lp&amp;_ad=topbar4&amp;_camp=myapps">Appconsole</a> &gt;&gt; Select <strong>App</strong> &gt;&gt; <strong>Settings</strong> tab &gt;&gt; <strong>App key</strong></td>
+<td>Copy the App key and add in the Client ID field.</td>
+</tr>
+<tr>
+<td><strong>Client Secret</strong></td>
+<td>Navigate to <a href="https://www.dropbox.com/developers/apps?_tk=pilot_lp&amp;_ad=topbar4&amp;_camp=myapps">Appconsole</a> &gt;&gt; Select <strong>App</strong> &gt;&gt; <strong>Settings</strong> tab &gt;&gt; <strong>App secret</strong></td>
+<td>Copy the App secret and add in the Client secret field.</td>
+</tr>
+<tr>
+<td><strong>Scopes</strong></td>
+<td>Navigate to <a href="https://www.dropbox.com/developers/apps?_tk=pilot_lp&amp;_ad=topbar4&amp;_camp=myapps">Appconsole</a> &gt;&gt; Select <strong>App</strong> &gt;&gt; <strong>Permissions</strong> tab &gt;&gt; select <strong>Scope</strong> <code>files.content.write</code></td>
+<td>Copy the scope <code>files.content.write</code> and add it to the field.</td>
+</tr>
+<tr>
+<td><strong>Authorization URL</strong></td>
+<td>Authorization Endpoint</td>
+<td><code>https://www.dropbox.com/oauth2/authorize</code></td>
+</tr>
+<tr>
+<td><strong>Redirect URL</strong></td>
+<td>Navigate to <a href="https://www.dropbox.com/developers/apps?_tk=pilot_lp&amp;_ad=topbar4&amp;_camp=myapps">Appconsole</a> &gt;&gt; Select <strong>App</strong> &gt;&gt; <strong>Settings</strong> tab &gt;&gt; <strong>OAuth2</strong> &gt;&gt; <strong>Redirect URIs</strong></td>
+<td>Add the Redirect URL from Appsmith to the field and click add button.</td>
+</tr>
+</tbody>
+</table>
+<p _="%" endhint="endhint">{% hint style="info" %}
+To create an application you can also follow the<a href="https://developers.dropbox.com/oauth-guide"> OAuth guide </a>available at Dropbox.</p>
+<p>Keep the rest of the settings and click the <code>Save and Authorize</code> button. You’ll be redirected to the datasource screen on Appsmith with the response status as success on successful authentication.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You can verify if your datasource verification has been successful by checking the <code>response_status</code> in the address bar of your browser.</p>
+<h3 id="upload-files">Upload Files<a class="headerlink" href="#upload-files" title="Permanent link">&para;</a></h3>
+<p>A user will select the files by using a <code>Filepicker</code> widget. Whenever a user chooses a file and clicks upload, the button will trigger the API call for uploading the file. Here’s a blueprint of interaction between Portal App and Dropbox:</p>
+<p><img alt="Upload files workflow and interaction" src="../../../../../.gitbook/assets/OAuth2.0API Integration  Authorization Code  Workflow  Upload.png" /></p>
+<ol>
+<li>User selects a file and clicks on the upload button.</li>
+<li>The <code>Upload API</code> residing on Appsmith will be called.</li>
+<li>The <code>Authenticated API</code> talks to Dropbox APIs for authorization and generating a token. The token generated is added to the Upload API call.</li>
+<li>The upload request is executed on Dropbox to upload a file.</li>
+<li>Dropbox directory structure shows that the file is uploaded successfully.</li>
+</ol>
+<p>You can send the response all up to the Portal App to display the uploaded file or bind it to show a message to intimate users for a successful upload.</p>
+<p>Let’s configure Authentication API to integrate with Dropbox and create the workflow for uploading files.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/RHhp5WaQV1g">https://youtu.be/RHhp5WaQV1g</a>" %}
+How to integrate with Dropbox?</p>
+<h3 id="create-query">Create Query<a class="headerlink" href="#create-query" title="Permanent link">&para;</a></h3>
+<p>Navigate to <strong>Explorer</strong> → Click <strong>(+)</strong> next to Query/API → Select <code>New &lt;AuthenticatedAPIName&gt; Query</code> under <strong>Create Query.</strong></p>
+<p>The action adds an API connected to the Datasource (AuthenticatedAPI) for Dropbox. You’ll see that the User Endpoint you configured for the datasource is already available, along with the header details.</p>
+<p><img alt="Create a query to use the Dropbox Authenticated API" src="../../../../../.gitbook/assets/OAuth2.0  API Integration  Authorization Code  Create New Query.png" /></p>
+<p>There are two ways to add the headers to the APIs:</p>
+<h4 id="add-headers-to-authenticated-api"><strong>Add Headers to Authenticated API</strong><a class="headerlink" href="#add-headers-to-authenticated-api" title="Permanent link">&para;</a></h4>
+<p>You can add headers directly to the Authenticated API when you configure it. Here you can add the headers that are common across the APIs. For example, content type.</p>
+<h4 id="add-headers-to-api"><strong>Add Headers to API</strong><a class="headerlink" href="#add-headers-to-api" title="Permanent link">&para;</a></h4>
+<p>You can add headers to individual APIs when you add them to the platform. Here you can add headers that are specific to API.</p>
+<h3 id="add-widget">Add Widget<a class="headerlink" href="#add-widget" title="Permanent link">&para;</a></h3>
+<p>Let’s add a filepicker widget to canvas and configure it to trigger the <code>Upload API</code> call.</p>
+<ul>
+<li>Navigate to <a href="../../../../../reference/widgets/"><strong>Widgets</strong></a> → search <strong>FilePicker</strong> in the search bar → Drag the <a href="../../../../../reference/widgets/">widget</a> onto the canvas.</li>
+<li>Select the <a href="../../../../../reference/widgets/filepicker.md"><code>FilePicker</code></a> Widget and navigate to the <code>onFilesSelected</code> event available on the properties pane.</li>
+<li>Enable JS available next to the event</li>
+<li>Add the following code in the input box.</li>
+</ul>
+<pre><code>{{UploadFileToDropbox.run() }} 
+</code></pre>
+<p>The above code snippet will trigger the API execution whenever from a <a href="../../../../../reference/widgets/filepicker.md">FilePicker</a> widget user selects a file and clicks on the Upload button available on the widget.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+At any given point in time, you can add data to your headers by using the mustache <strong><code>{{}}</code></strong> sign. For example, <code>FilePicker1.files[0].name</code> for filename.</p>
+<p>Once the API call is successful, you can navigate to the Dropbox interface and verify the file upload.</p>
+<h2 id="integrate-with-google-docs">Integrate with Google Docs<a class="headerlink" href="#integrate-with-google-docs" title="Permanent link">&para;</a></h2>
+<p>Let’s look into some other integrations that you can do with <a href="../../#create-authenticated-api">Authenticated APIs</a>. In this section, you’ll be able to configure your Google Docs integrations to your Appsmith apps.</p>
+<h3 id="user-endpoint_1">User Endpoint<a class="headerlink" href="#user-endpoint_1" title="Permanent link">&para;</a></h3>
+<p>You’ll have to connect to a user endpoint on the Google Docs platform to perform API calls. Google Docs provide an <a href="https://developers.google.com/docs/api/how-tos/overview">exhaustive guide for integrating with Docs API</a>.</p>
+<h3 id="configure-authenticate-api">Configure Authenticate API<a class="headerlink" href="#configure-authenticate-api" title="Permanent link">&para;</a></h3>
+<p>Follow these steps to configure Google docs integration for an Authenticated API.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/ZO9rV9j2S9w">https://youtu.be/ZO9rV9j2S9w</a>" %}
+How to integrate with Google Docs?</p>
+<table>
+<thead>
+<tr>
+<th><strong>Appsmith</strong></th>
+<th><strong>Google Docs</strong></th>
+<th><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>URL</strong></td>
+<td>User Endpoint</td>
+<td><code>https://docs.googleapis.com/</code></td>
+</tr>
+<tr>
+<td><strong>Authentication Type</strong></td>
+<td>NA</td>
+<td><code>OAuth 2.0</code></td>
+</tr>
+<tr>
+<td><strong>Grant Type</strong></td>
+<td>NA</td>
+<td><code>Authorization Code</code></td>
+</tr>
+<tr>
+<td><strong>Access Token URL</strong></td>
+<td>Token Endpoint</td>
+<td><code>https://oauth2.googleapis.com/toke</code>n</td>
+</tr>
+<tr>
+<td><strong>Client ID</strong></td>
+<td>Navigate to <a href="https://console.developers.google.com">Google API Console</a> &gt;&gt; Select Your Project that has Google Docs API Enabled &gt;&gt; Select Google API Docs on API/Service Details &gt;&gt; Click on Client Credentials &gt;&gt; Select the OAuth 2.0 Client &gt;&gt; Copy Client ID</td>
+<td>Copy the Client ID and add in the Client ID field.</td>
+</tr>
+<tr>
+<td><strong>Client Secret</strong></td>
+<td><p>Navigate to <a href="https://console.developers.google.com">Google API Console</a> &gt;&gt; Select Your Project that has Google Docs API Enabled &gt;&gt; Select Google API Docs on API/Service Details &gt;&gt; Click on Client Credentials &gt;&gt; Select the OAuth 2.0 Client &gt;&gt;</p><p>Copy Client Secret</p></td>
+<td>Copy the Client secret and add in the Client secret field.</td>
+</tr>
+<tr>
+<td><strong>Scopes</strong></td>
+<td>Navigate to <a href="https://developers.google.com/docs/api/reference/rest/v1/documents">Google API doc </a>&gt;&gt;Click the API you are integrating with for example (create) &gt;&gt; on the right Panel &gt;&gt; Try this method &gt;&gt; scroll to the <strong>show scopes</strong> link &gt;&gt; click on the link to reveal the scopes required for the API.</td>
+<td><p><code><a href="https://www.googleapis.com/auth/documents">https://www.googleapis.com/auth/documents</a></code></p><p><code><a href="https://www.googleapis.com/auth/drive">https://www.googleapis.com/auth/drive</a></code></p></td>
+</tr>
+<tr>
+<td><strong>Authorization URL</strong></td>
+<td>Authorization Endpoint</td>
+<td><code>https://accounts.google.com/o/oauth2/auth</code></td>
+</tr>
+<tr>
+<td><strong>Redirect URL</strong></td>
+<td>Navigate to <a href="https://console.developers.google.com">Google API Console</a> &gt;&gt; Select Your Project that has Google Docs API Enabled &gt;&gt; Select Google API Docs on API/Service Details &gt;&gt; Click on Client Credentials &gt;&gt; Select the OAuth 2.0 Client &gt;&gt;Authorized redirect URIs</td>
+<td>Add the Redirect URL from Appsmith to the field and click the save button.</td>
+</tr>
+</tbody>
+</table>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You can follow the step-by-step guide provided by Google to set up an<a href="https://support.google.com/cloud/answer/6158849?hl=en#zippy=%2Cuser-consent"> OAuth 2.0 Client</a>.</p>
+<p>Keep the other settings as is and click <code>Save &amp; Authorize</code> button to create the Authenticated API. You’ll be asked to sign in to your Google account and authorize the datasource. Once successfully authenticated, you’ll navigate to the Appsmith Datasource screen with response status available in the address bar. A response status as success marks the successful configuration of the datasource.</p>
+<p>Once the datasource is added, you can create queries and perform different actions with the google docs interface.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You can also check out the How-To Guide- <a href="../../../../../learning-and-resources/how-to-guides/oauth2-authorization-for-google-sheets.md">How to add OAuth2 Authorization for Integrating Google Sheets</a> into Appsmith.</p>
+<h2 id="integrate-with-zoho-campaigns">Integrate with Zoho Campaigns<a class="headerlink" href="#integrate-with-zoho-campaigns" title="Permanent link">&para;</a></h2>
+<p>Let’s look into another integration that you can do with <a href="../../#create-authenticated-api">Authenticated APIs</a>. In this section, you’ll be able to configure your Appsmith app to integrate with Zoho Campaigns.</p>
+<h3 id="user-endpoint_2">User Endpoint<a class="headerlink" href="#user-endpoint_2" title="Permanent link">&para;</a></h3>
+<p>You’ll have to connect to a user endpoint on the Zoho Campaigns platform to perform API calls. Zoho Campaigns provide an <a href="https://www.zoho.com/campaigns/help/developers/campaign-management.html">exhaustive developer guide for integrating with Campaign APIs</a>.</p>
+<h3 id="configure-authenticated-api_1">Configure Authenticated API<a class="headerlink" href="#configure-authenticated-api_1" title="Permanent link">&para;</a></h3>
+<p>Follow these steps to configure Zoho Campaigns' integration for an Authenticated API.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/ABN1SadqXk4">https://youtu.be/ABN1SadqXk4</a>" %}
+How to integrate with Zoho Campaigns?</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+The Zoho APIs are location-specific, i.e., if your organization is located in the United States of America (US), then the API endpoints you use should be specific to the<code>.com</code> domain. For example, <code>https://campaigns.zoho.com/</code> will be used if your organization is located in the US. Whenever you configure the URL in the <code>Authenticated API</code>, verify the <strong>location</strong> of your <strong>organization</strong>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Appsmith</strong></th>
+<th><strong>Zoho Campaigns</strong></th>
+<th><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>URL</strong></td>
+<td>User Endpoint</td>
+<td><code>https://campaigns.zoho.in/api</code></td>
+</tr>
+<tr>
+<td><strong>Authentication Type</strong></td>
+<td>NA</td>
+<td><code>OAuth 2.0</code></td>
+</tr>
+<tr>
+<td><strong>Grant Type</strong></td>
+<td>NA</td>
+<td><code>Authorization Cod</code>e</td>
+</tr>
+<tr>
+<td><strong>Access Token URL</strong></td>
+<td>Token Endpoint</td>
+<td><code>https://accounts.zoho.in/oauth/v2/token</code></td>
+</tr>
+<tr>
+<td><strong>Client ID</strong></td>
+<td>Navigate to <a href="https://api-console.zoho.com">Zoho API Console</a>&gt;&gt; Select Your Application &gt;&gt; Select Client Secret Tab&gt;&gt; Copy Client ID</td>
+<td>Add it to the Client ID field on Appsmith.</td>
+</tr>
+<tr>
+<td><strong>Client Secret</strong></td>
+<td>Navigate to <a href="https://api-console.zoho.com">Zoho API Console</a>&gt;&gt; Select Your Application &gt;&gt; Select Client Secret Tab&gt;&gt; Copy Client Secret</td>
+<td>Add it to the Client secret field on Appsmith.</td>
+</tr>
+<tr>
+<td><strong>Scopes</strong></td>
+<td>Navigate to the <a href="https://www.zoho.com/campaigns/help/developers/campaign-details.html">Zoho Campaign guide</a> and click on the API you want to integrate with and check the scope required.</td>
+<td><code>Zohocampaigns.campaign.ALL</code></td>
+</tr>
+<tr>
+<td><strong>Authorization URL</strong></td>
+<td>Authorization Endpoint</td>
+<td><code>https://accounts.zoho.in/oauth/v2/auth</code></td>
+</tr>
+<tr>
+<td><strong>Redirect URL</strong></td>
+<td>Navigate to <a href="https://api-console.zoho.com">Zoho API Console</a>&gt;&gt; Select Your Application &gt;&gt; Select Client Details&gt;&gt; Authorized Redirect URIs</td>
+<td>Add the Redirect URL from Appsmith to the field and click the <strong>Update</strong> button.</td>
+</tr>
+</tbody>
+</table>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You can follow the step-by-step guide provided by Zoho to <a href="https://www.zoho.com/people/api/oauth-steps.html">Register the Client</a>.</p>
+<p>Once you make changes to the above fields, click <code>Save &amp; Authorize</code> button to create the Authenticated API. You’ll be asked to authorize the datasource by signing into your Zoho Account. You’ll be navigated to the Appsmith Datasource screen with a response status as success available in the address bar on successful authentication.</p>
+<p>Once the datasource is added, you can create queries and perform different actions with the Zoho Campaign interface.</p>
+<h2 id="additional-settings">Additional Settings<a class="headerlink" href="#additional-settings" title="Permanent link">&para;</a></h2>
+<p>Apart from the required settings, there are some optional settings which have default values set, and you can change the configuration if the need be:</p>
+<h3 id="custom-authentication-parameters">Custom Authentication Parameters<a class="headerlink" href="#custom-authentication-parameters" title="Permanent link">&para;</a></h3>
+<p>If your authorization server needs you to send some custom query parameters as part of access token request, you can add those here. You can add one or more parameters based on your needs. For example, your API needs a parameter <code>showPrompt</code> that is sent to authorization server and based on it your API logic either presents user with a prompt to take the consent or the prompt is not shown as the consent is already recorded. In such cases, you configure the <code>showPrompt</code> parameter as a custom parameter.</p>
+<p><img alt="Add one or more custom authentication parameters" src="../../../../../.gitbook/assets/OAuth 2.0  API Integration  Custom Authentication Parameters (1).png" /></p>
+<h3 id="client-authentication">Client Authentication<a class="headerlink" href="#client-authentication" title="Permanent link">&para;</a></h3>
+<p>If your APIs need client credentials to be sent along then you can use client authentication field. You can either choose to send the client credentials as part of:</p>
+<p><img alt="Select the option to send Client Authentication" src="../../../../../.gitbook/assets/OAuth 2.0  API Integration  Client Credentials.png" /></p>
+<ul>
+<li>Basic authorization header by selecting <strong>Send as Basic Auth Header</strong>.</li>
+<li>Body in the form of client credentials by selecting <strong>Send client credentials in body</strong>.</li>
+</ul>
+<h2 id="advanced-settings">Advanced Settings<a class="headerlink" href="#advanced-settings" title="Permanent link">&para;</a></h2>
+<p>There are some advance settings that you can configure as part of your <a href="../../#create-authenticated-api">Authenticated API</a>.</p>
+<h3 id="send-scope-with-refresh-token">Send Scope with Refresh Token<a class="headerlink" href="#send-scope-with-refresh-token" title="Permanent link">&para;</a></h3>
+<p>With this configuration you can choose to send the scope configured for the API along with a refresh token. By default, the setting is turned off. You can turn on the settings by selecting <strong>Yes</strong>.</p>
+<p><img alt="Select 'Yes' to turn on the setting" src="../../../../../.gitbook/assets/OAuth 2.0  API Integration  Advanced Settings  Send Scope with refresh token.png" /></p>
+<h3 id="send-client-credentials-with-on-refresh-token">Send Client Credentials with (on Refresh Token)<a class="headerlink" href="#send-client-credentials-with-on-refresh-token" title="Permanent link">&para;</a></h3>
+<p>You can choose to send the client credentials along with refresh tokens by configuring this field. You can either choose to send the client credentials as part of header by selecting <strong>header</strong>, or as part of body by selecting <strong>body.</strong></p>
+<p><img alt="You can choose what best suits your business needs" src="../../../../../.gitbook/assets/OAuth 2.0  API Integration  Send client credentials with.png" /></p>
+<p>With <a href="./">OAuth 2.0</a> integration, you can connect your APIs to Appsmith and build complex apps.</p>
+
+
+
+
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes", "header.autohide"], "search": "../../../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+  
+      <script src="../../../../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  <script src="../../../../../../assets/javascripts/bundle.d665d539.min.js"></script>
+
+  </body>
+</html>

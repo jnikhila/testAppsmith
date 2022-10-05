@@ -1,0 +1,1440 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Multiple Queries can be triggered in serial/parallel/conditional when a user interacts with a widget">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>Creating Workflows - Test Appsmith</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e38d1c16.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link rel="stylesheet" href="../../../assets/stylesheets/main.7073df5a.min.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creating-workflows" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://appsmith.com">
+     <strong>Appsmith Cloud</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://www.appsmith.com/blog-categories/tutorial">
+   <strong>Tutorials</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://community.appsmith.com/">
+    <strong>Forum</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://github.com/appsmithorg/appsmith">
+    <strong>GitHub</strong>
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Test Appsmith" class="md-header__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Test Appsmith
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Creating Workflows
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Test Appsmith" class="md-nav__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    Test Appsmith
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../introduction/" class="md-nav__link">
+        What is Appsmith?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/start-building/" class="md-nav__link">
+        Build Your First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/">Self Hosting</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Self Hosting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Self Hosting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/installation-guides/">Installation Guides</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Guides" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_2" type="checkbox" id="__nav_2_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/installation-guides/docker/">Docker</a>
+          
+            <label for="__nav_2_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/docker/migrate/" class="md-nav__link">
+        Migrate from Multi-Container setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_3" type="checkbox" id="__nav_2_3_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/installation-guides/kubernetes/">Kubernetes</a>
+          
+            <label for="__nav_2_3_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/kubernetes/migrate-k8s/" class="md-nav__link">
+        Migrate from multi-container setup (k8s)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/aws-ami/" class="md-nav__link">
+        AWS AMI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/aws-ecs/" class="md-nav__link">
+        AWS ECS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/cloudjiffy/" class="md-nav__link">
+        CloudJiffy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/digitalocean/" class="md-nav__link">
+        DigitalOcean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/heroku/" class="md-nav__link">
+        Heroku
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/instance-configuration/">Installation Configuration</a>
+          
+            <label for="__nav_2_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2" type="checkbox" id="__nav_2_3_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/instance-configuration/authentication/">Authentication</a>
+          
+            <label for="__nav_2_3_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Authentication" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2_2" type="checkbox" id="__nav_2_3_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/">Open ID Connect</a>
+          
+            <label for="__nav_2_3_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Open ID Connect" data-md-level="5">
+        <label class="md-nav__title" for="__nav_2_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Open ID Connect
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/auth0/" class="md-nav__link">
+        Auth0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/okta/" class="md-nav__link">
+        Okta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/ping-identity/" class="md-nav__link">
+        Ping Identity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/active-directory/" class="md-nav__link">
+        Active Directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Core Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Core Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../building-ui/">Building UI</a>
+          
+            <label for="__nav_2_4_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Building UI" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Building UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_2" type="checkbox" id="__nav_2_4_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_2">
+          Designing an Application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Designing an Application" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Designing an Application
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building-ui/designing-an-application/app-theming/" class="md-nav__link">
+        App Theming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Advanced Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1">
+          Custom Authentication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Authentication" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Advanced%20Concepts/how-to-implement-custom-authentication-on-appsmith/" class="md-nav__link">
+        How to implement custom authentication on Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1_2" type="checkbox" id="__nav_2_5_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1_2">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Advanced%20Concepts/more/backup-restore/" class="md-nav__link">
+        Migrate Applications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    Fields
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sync-fields" class="md-nav__link">
+    Sync Fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#async-fields" class="md-nav__link">
+    Async Fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-an-async-function-response-in-a-sync-field" class="md-nav__link">
+    Use an Async Function Response in a Sync Field
+  </a>
+  
+    <nav class="md-nav" aria-label="Use an Async Function Response in a Sync Field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-case" class="md-nav__link">
+    Use case
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handling-success-error" class="md-nav__link">
+    Handling Success / Error
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complex-workflows" class="md-nav__link">
+    Complex Workflows
+  </a>
+  
+    <nav class="md-nav" aria-label="Complex Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#executing-queries-in-parallel-serial" class="md-nav__link">
+    Executing Queries in Parallel / Serial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditional-execution" class="md-nav__link">
+    Conditional Execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+
+
+<h1 id="creating-workflows">Creating Workflows<a class="headerlink" href="#creating-workflows" title="Permanent link">&para;</a></h1>
+<p>When you build an app on Appsmith, you manipulate data; add, update, delete and retrieve data, add actions and trigger them. You use Javascript functions, APIs, or Queries to build different workflows.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+To create workflows, you should be familiar with <a href="../../reference/appsmith-framework/README (1).md#functions">triggering actions</a> from <a href="broken-reference/">widgets</a> and expand on triggering more complex actions.</p>
+<h2 id="fields"><strong>Fields</strong><a class="headerlink" href="#fields" title="Permanent link">&para;</a></h2>
+<p>The widgets have fields you can use to bind data or trigger operations. Appsmith has segregated the fields into Sync and Async fields.</p>
+<h3 id="sync-fields"><strong>Sync Fields</strong><a class="headerlink" href="#sync-fields" title="Permanent link">&para;</a></h3>
+<p>Whenever you drag a widget on the canvas, you can select it and see the properties associated with it in the properties pane. The fields that expect input or data in the properties pane are called Sync Fields.</p>
+<p><img alt="Input widget - Sync Fields" src="../../.gitbook/assets/Writing Code  Creating Workflows  Sync Fields  Input Widget.png" /></p>
+<p>For example, if you have added an Input widget to the canvas, the properties like MaxChars, Regex, Error Message, and so on expect some input and are Sync Fields.</p>
+<h3 id="async-fields"><strong>Async Fields</strong><a class="headerlink" href="#async-fields" title="Permanent link">&para;</a></h3>
+<p>The properties that can trigger an action or perform an operation are called Async Fields.</p>
+<p><img alt="Input Widget - Async Fields" src="../../.gitbook/assets/Writing Code  Creating Workflows  Async Fields  Input Widget.png" /></p>
+<p>For example, the properties like <code>OnTextChanged</code> and <code>OnSubmit</code> of an input widget are considered async fields. You can use these properties to define an action or perform an <a href="../../reference/appsmith-framework/README (1).md#functions">operation</a>.</p>
+<h3 id="use-an-async-function-response-in-a-sync-field"><strong>Use an Async Function Response in a Sync Field</strong><a class="headerlink" href="#use-an-async-function-response-in-a-sync-field" title="Permanent link">&para;</a></h3>
+<p>{% embed url="<a href="https://youtu.be/yn_8gs5w04g">https://youtu.be/yn_8gs5w04g</a>" %}</p>
+<p>Let's look at some examples to understand how you can use async functions in sync fields.</p>
+<h4 id="use-case"><strong>Use case</strong><a class="headerlink" href="#use-case" title="Permanent link">&para;</a></h4>
+<p>You are fetching all the users and displaying information like First Name, Last Name, Email, and more on a page. You have a table widget to display the data.</p>
+<p><strong>Using an API</strong></p>
+<p>You have an API that fetches Users. You want to trigger the API execution, so you bind the API call to the widget, and the response generated will be shown in the table.</p>
+<p>To add a Table widget; Navigate to <code>Explorer</code> &gt;&gt; Click on <code>Widgets</code> &gt;&gt; Search <code>table</code> &gt;&gt; Drag a table widget onto the canvas.&#x20;</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/iYZV9DPnugY">https://youtu.be/iYZV9DPnugY</a>" %}
+How to call API in the Sync field?</p>
+<p>To read data by using an API: Create an API - <code>getAllUsers</code> on Appsmith by adding the <code>API</code> from <code>Explorer</code> &gt;&gt; Click <code>(+)</code> Query/JS  &gt;&gt; Select <code>New Blank API</code>  &gt;&gt; Rename to <code>getAllUsers</code> (or select an existing API) Add API call to the table data property of a table widget as shown in the code snippet below:</p>
+<pre><code> {{getAllUsers.data}}
+</code></pre>
+<p _="%" endhint="endhint">{% hint style="info" %}
+The <a href="../../reference/widgets/table/#table-data">table data property of a table</a> requires a <strong>JSON Array</strong> so verify that your API returns a <strong>JSON Array</strong>.</p>
+<p>A <mark style="color:red;"><code>{{API.run()}}</code></mark> method, if supplied to the <a href="../../reference/widgets/table/#table-data">Table data</a>, will throw an error, as table data is a Sync field and cannot perform the execution. However, you can read the response generated by the API by accessing the data property <mark style="color:red;"><code>{{API.data}}</code></mark> of an API. When you bound an API data property to a widget, Appsmith executes the API <strong>on page load</strong>. You can modify the API settings if you wish not to execute the API <strong>on page load</strong>.</p>
+<p><strong>Using a JSObject</strong></p>
+<p>You have a JSObject function that fetches all Users' information, filters data for <code>firstname</code> &amp; <code>email,</code> and then returns the result so you can bind it to the table widget and display information.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/8mVQS6uaR6M">https://youtu.be/8mVQS6uaR6M</a>" %}
+How to call an async JSObject function from a Sync Field?</p>
+<p>To read the data by calling a JSObject function: Create a JSObject - <code>getFilteredUsersList</code> on Appsmith by adding a <code>JSObject</code> from <code>Explorer</code> &gt;&gt; Click <code>(+)</code> Query/JS &gt;&gt; Select <code>New JS Object</code> &gt;&gt; Rename to <code>getFilteredUsersList</code> (or select an existing JSObject) You can add your API or Query Call to the function call and filter the data for the required details as below:</p>
+<pre><code>export default {
+    userFilteredList: async () =&gt; {
+    const listUser = await getAllUsers.run();
+        return listUser.map((user) =&gt; {
+            return {
+                &quot;firstname&quot; : user.name,
+                &quot;email&quot; : user.email
+            }
+        })      
+    }
+}
+</code></pre>
+<p>A function call to the JSObject <mark style="color:red;"><code>getFilteredUsersList.userFilteredList()</code></mark> will throw an error as table data is a sync field and cannot perform function execution. However, you can use the JSObject function response by adding <mark style="color:red;"><code>{{&lt;JSOBJECTNAME.FUNCTIONAME.data&gt;}}(</code></mark> <mark style="color:red;"></mark><mark style="color:red;"></mark> <mark style="color:red;"></mark><mark style="color:red;"><code>{{getFilteredUsersList.userList.data}})</code></mark>by reading the function's response. Appsmith handles the JSObject function execution <strong>on page load</strong>. You can modify the async function settings from the settings tab if you wish not to execute the function <strong>on page load</strong>.</p>
+<p><strong>Using a Query</strong></p>
+<p>You have a query that fetches Users’ information, returns the response, and binds it to the table widget to display data.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/hqkI0h7DQ-s">https://youtu.be/hqkI0h7DQ-s</a>" %}
+How to trigger a query execution from a Sync field?</p>
+<p>To read data by calling a query:&#x20;</p>
+<ul>
+<li>Click on the <strong>+</strong> icon next to the <strong>queries/js</strong> and create a new query.</li>
+<li>Select <code>DatabaseName</code> for which you want to add Query.</li>
+<li>Rename the query to <mark style="color:red;"><code>fetchUsersList.</code></mark></li>
+</ul>
+<p>Assuming that the table name is Users. Add the following code to the query editor.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+Replace <strong>users</strong> with the <strong>table name</strong> in your database.</p>
+<pre><code class="language-sql">SELECT * FROM users ORDER BY id LIMIT 10;
+</code></pre>
+<p>An execution call to the query <mark style="color:red;"><code>fetchUsersList.run()</code></mark> will throw an error as table data expects data and cannot perform query execution. However, you can read the query response and use it in the Table data to display records by using <mark style="color:red;"><code>{{&lt;QUERY_NAME.data&gt;}}(fetchUsersList.data)</code></mark>. Appsmith handles the query execution <strong>on page load</strong>. You can modify the query settings from the settings tab if you wish not to execute the query <strong>on page load</strong>.</p>
+<h2 id="events"><strong>Events</strong><a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
+<p>You can trigger the actions by binding them with Async fields. For example, you want to show a success message on the submission of a button by using <mark style="color:red;"><code>showAlert()</code></mark>. You'll have to bind the [<mark style="color:red;"><code>showAlert()</code></mark>](Add a link to Actions - Show Alert method) function on the <mark style="color:red;"><code>onClick()</code></mark> event.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You can only use the <strong>global actions</strong> provided out-of-the-box by Appsmith in the <strong>async</strong> <strong>fields</strong>, which are events or actions.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/tjJIDkoCyQE">https://youtu.be/tjJIDkoCyQE</a>" %}
+Execute a global function from an async field</p>
+<h3 id="handling-success-error">Handling Success / Error<a class="headerlink" href="#handling-success-error" title="Permanent link">&para;</a></h3>
+<p>The property pane allows us to configure the action to take once a Query returns with a success or an error. The Success / Error returned by the API/Query can be determined by the HTTP status code or the query response status.</p>
+<p>We can decide to display a success or an error message by using the <a href="broken-reference/"><strong>showAlert action</strong></a>.</p>
+<p><img alt="" src="../../.gitbook/assets/error handling.gif" /></p>
+<h2 id="complex-workflows">Complex Workflows<a class="headerlink" href="#complex-workflows" title="Permanent link">&para;</a></h2>
+<p>The GUI is limited to a single <a href="broken-reference/">onSuccess</a> / <a href="broken-reference/">onError</a> callback, while the underlying framework has no limitation. To write complex workflows that cannot be accommodated in the GUI, click on the <strong>JS</strong> icon next to the event name &amp; enable JavaScript. Now you can write conditional workflows and chain multiple Queries.</p>
+<p><img alt="" src="../../.gitbook/assets/conditional query.gif" /></p>
+<p _="%" endhint="endhint">{% hint style="success" %}
+Once you have configured <a href="broken-reference/">actions</a> using the GUI, you can click on the JS icon next to the event to show the JavaScript equivalent of your configuration. It can help you learn to use JavaScript to configure workflows!</p>
+<h3 id="executing-queries-in-parallel-serial">Executing Queries in Parallel / Serial<a class="headerlink" href="#executing-queries-in-parallel-serial" title="Permanent link">&para;</a></h3>
+<p>Each query object has a <a href="../../reference/appsmith-framework/query-object.md#run">run</a> method used to execute the query. To execute multiple queries, you have to separate the run statement in the buttons <mark style="color:red;"><code>onClick</code></mark> handler with a semicolon<mark style="color:red;">(;)</mark>. The <a href="broken-reference/">run</a> method is asynchronous, and you can execute multiple queries in parallel as below:</p>
+<pre><code class="language-javascript">{{ API1.run(); Query2.run(); API2.run(); }}
+</code></pre>
+<p>or chained to be called <mark style="color:red;"><code>onSuccess / onError</code></mark> using the callback arguments in the <a href="broken-reference/">Run Signature</a>.</p>
+<pre><code class="language-javascript">{{ 
+    updateUsers.run()
+        .then(() =&gt; fetchUsers.run()
+                    .then(() =&gt; { 
+                        showAlert('User Updated'); 
+                        closeModal('Modal1'); 
+                        })
+                .catch(() =&gt; showAlert(&quot;Fetch Users Failed&quot;))
+        ).catch(() =&gt; showAlert(&quot;Update User Failed&quot;, &quot;error&quot;)) 
+}}
+</code></pre>
+<p>The following example shows how you can run two queries on a single click event:</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/flCSSNTwWc4">https://youtu.be/flCSSNTwWc4</a>" %}
+Example | Executing Queries in Parallel&#x20;</p>
+<p>You'll see that <strong>Query 1</strong> includes information about location, pin code, email address, and phone number, and <strong>Query 2</strong> includes information about name, gender, and ID.</p>
+<p>To run both the queries:</p>
+<ul>
+<li>Drag and drop two table widgets into the canvas.</li>
+<li>In the <a href="../../reference/widgets/table/#table-data">Table Data</a> section, call your query.</li>
+</ul>
+<pre><code class="language-javascript">{{Query1.data}} //For Table 1
+
+{{Query2.data}} // For Table 2
+</code></pre>
+<ul>
+<li>Add a <a href="../../reference/widgets/button/">button widget</a> to call both queries simultaneously.&#x20;</li>
+<li>In the button's <strong>onClick</strong> event, toggle the <strong>JS</strong> option and paste the below code:</li>
+</ul>
+<pre><code class="language-javascript">{{Query1.run(); Query2.run()}}
+</code></pre>
+<p>You can execute multiple queries simultaneously with this command.</p>
+<h3 id="conditional-execution">Conditional Execution<a class="headerlink" href="#conditional-execution" title="Permanent link">&para;</a></h3>
+<p><a href="../data-access-and-binding/querying-a-database/">Queries</a> can also be chained to execute conditionally based on the value of a widget or the response of a Query</p>
+<pre class="language-javascript" data-overflow="wrap"><code class="lang-javascript">{{ 
+  statusDropdown.selectedOptionValue === "Pending" ?
+      fetchPendingUsers.run(() => {
+<strong>          fetchPendingUsers.data.length === 0 
+</strong><strong>          ? showAlert("No Users Pending Approval", "info") 
+</strong><strong>          : showAlert("Fetched Users", "success");
+</strong>      }) 
+      : fetchApprovedUsers.run();
+}}</code></pre>
+
+<p _="%" endhint="endhint">{% hint style="success" %}
+Use the <a href="../../reference/appsmith-framework/README (1).md">Appsmith Framework</a> and <a href="../ext-libraries/">External Libraries</a> to build logic into your applications quickly.</p>
+
+
+
+
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes", "header.autohide"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+  
+      <script src="../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  <script src="../../../assets/javascripts/bundle.d665d539.min.js"></script>
+
+  </body>
+</html>

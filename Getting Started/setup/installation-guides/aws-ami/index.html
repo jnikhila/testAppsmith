@@ -1,0 +1,1606 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Deploy Appsmith on AWS with an AMI on the marketplace">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>AWS AMI - Test Appsmith</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e38d1c16.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link rel="stylesheet" href="../../../../assets/stylesheets/main.7073df5a.min.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aws-ami" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://appsmith.com">
+     <strong>Appsmith Cloud</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://www.appsmith.com/blog-categories/tutorial">
+   <strong>Tutorials</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://community.appsmith.com/">
+    <strong>Forum</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://github.com/appsmithorg/appsmith">
+    <strong>GitHub</strong>
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Test Appsmith" class="md-header__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Test Appsmith
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AWS AMI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Test Appsmith" class="md-nav__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    Test Appsmith
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../introduction/" class="md-nav__link">
+        What is Appsmith?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../start-building/" class="md-nav__link">
+        Build Your First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Self Hosting</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Self Hosting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Self Hosting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Installation Guides</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Guides" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_2" type="checkbox" id="__nav_2_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../docker/">Docker</a>
+          
+            <label for="__nav_2_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/migrate/" class="md-nav__link">
+        Migrate from Multi-Container setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_3" type="checkbox" id="__nav_2_3_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../kubernetes/">Kubernetes</a>
+          
+            <label for="__nav_2_3_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes/migrate-k8s/" class="md-nav__link">
+        Migrate from multi-container setup (k8s)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          AWS AMI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        AWS AMI
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-steps" class="md-nav__link">
+    Tutorial Steps:
+  </a>
+  
+    <nav class="md-nav" aria-label="Tutorial Steps:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-register-with-amazon-web-services" class="md-nav__link">
+    Step 1: Register With Amazon Web Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-generate-an-ssh-key-pair" class="md-nav__link">
+    Step 2: Generate an SSH key pair
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-an-aws-security-group" class="md-nav__link">
+    Step 3: Create an AWS Security Group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-deploy-appsmith-on-aws-cloud" class="md-nav__link">
+    Step 4: Deploy Appsmith On AWS Cloud
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-credentials" class="md-nav__link">
+    Application Credentials
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-find-credentials-by-checking-the-system-log-on-the-aws-cloud-console-ec2" class="md-nav__link">
+    Option 1: Find Credentials By Checking The System Log On The AWS Cloud Console (EC2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-find-credentials-by-connecting-to-your-application-through-ssh" class="md-nav__link">
+    Option 2: Find Credentials By Connecting To Your Application Through SSH
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-your-appsmith-installation" class="md-nav__link">
+    Updating Your Appsmith Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating Your Appsmith Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-installation-manually" class="md-nav__link">
+    Update Installation Manually
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-auto-updates" class="md-nav__link">
+    Enable Auto-Updates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-ecs/" class="md-nav__link">
+        AWS ECS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudjiffy/" class="md-nav__link">
+        CloudJiffy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digitalocean/" class="md-nav__link">
+        DigitalOcean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../heroku/" class="md-nav__link">
+        Heroku
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../instance-configuration/">Installation Configuration</a>
+          
+            <label for="__nav_2_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2" type="checkbox" id="__nav_2_3_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../instance-configuration/authentication/">Authentication</a>
+          
+            <label for="__nav_2_3_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Authentication" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2_2" type="checkbox" id="__nav_2_3_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../instance-configuration/authentication/openid-connect-oidc/">Open ID Connect</a>
+          
+            <label for="__nav_2_3_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Open ID Connect" data-md-level="5">
+        <label class="md-nav__title" for="__nav_2_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Open ID Connect
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instance-configuration/authentication/openid-connect-oidc/auth0/" class="md-nav__link">
+        Auth0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instance-configuration/authentication/openid-connect-oidc/okta/" class="md-nav__link">
+        Okta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instance-configuration/authentication/openid-connect-oidc/ping-identity/" class="md-nav__link">
+        Ping Identity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../instance-configuration/authentication/openid-connect-oidc/active-directory/" class="md-nav__link">
+        Active Directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Core Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Core Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Core%20Concepts/building-ui/">Building UI</a>
+          
+            <label for="__nav_2_4_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Building UI" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Building UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_2" type="checkbox" id="__nav_2_4_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_2">
+          Designing an Application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Designing an Application" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Designing an Application
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Core%20Concepts/building-ui/designing-an-application/app-theming/" class="md-nav__link">
+        App Theming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Advanced Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1">
+          Custom Authentication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Authentication" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Advanced%20Concepts/how-to-implement-custom-authentication-on-appsmith/" class="md-nav__link">
+        How to implement custom authentication on Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1_2" type="checkbox" id="__nav_2_5_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1_2">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Advanced%20Concepts/more/backup-restore/" class="md-nav__link">
+        Migrate Applications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-steps" class="md-nav__link">
+    Tutorial Steps:
+  </a>
+  
+    <nav class="md-nav" aria-label="Tutorial Steps:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-register-with-amazon-web-services" class="md-nav__link">
+    Step 1: Register With Amazon Web Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-generate-an-ssh-key-pair" class="md-nav__link">
+    Step 2: Generate an SSH key pair
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-an-aws-security-group" class="md-nav__link">
+    Step 3: Create an AWS Security Group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-deploy-appsmith-on-aws-cloud" class="md-nav__link">
+    Step 4: Deploy Appsmith On AWS Cloud
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-credentials" class="md-nav__link">
+    Application Credentials
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-find-credentials-by-checking-the-system-log-on-the-aws-cloud-console-ec2" class="md-nav__link">
+    Option 1: Find Credentials By Checking The System Log On The AWS Cloud Console (EC2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-find-credentials-by-connecting-to-your-application-through-ssh" class="md-nav__link">
+    Option 2: Find Credentials By Connecting To Your Application Through SSH
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-your-appsmith-installation" class="md-nav__link">
+    Updating Your Appsmith Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Updating Your Appsmith Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-installation-manually" class="md-nav__link">
+    Update Installation Manually
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-auto-updates" class="md-nav__link">
+    Enable Auto-Updates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+
+
+<h1 id="aws-ami">AWS AMI<a class="headerlink" href="#aws-ami" title="Permanent link">&para;</a></h1>
+<h2 id="tutorial-steps">Tutorial Steps:<a class="headerlink" href="#tutorial-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="./#step-1-register-with-amazon-web-services">Register with Amazon Web Services (AWS)</a></li>
+<li><a href="./#step-2-generate-an-ssh-key-pair">Generate an SSH key pair</a></li>
+<li><a href="./#step-3-create-an-aws-security-group">Create an AWS Security Group</a></li>
+<li><a href="./#step-4-deploy-appsmith-on-aws-cloud">Deploy Appsmith on an AWS cloud server</a></li>
+<li><a href="./#application-credentials">Find Application Credentials</a></li>
+<li><a href="./#updating-your-appsmith-installation">Updating your Appsmith installation</a></li>
+</ul>
+<h3 id="step-1-register-with-amazon-web-services">Step 1: Register With Amazon Web Services<a class="headerlink" href="#step-1-register-with-amazon-web-services" title="Permanent link">&para;</a></h3>
+<p>If you already have an Amazon Web Services account, you may skip this step.</p>
+<p>Please follow the steps <a href="https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/">detailed here</a> in order to create an account on AWS.</p>
+<h3 id="step-2-generate-an-ssh-key-pair">Step 2: Generate an SSH key pair<a class="headerlink" href="#step-2-generate-an-ssh-key-pair" title="Permanent link">&para;</a></h3>
+<p>If you already have an SSH key pair for the AWS region you are operating in, you can skip this step.</p>
+<p>Please follow the steps <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">detailed here</a> to generate a new key-pair. You need this key to SSH into your AWS EC2 instance.</p>
+<h3 id="step-3-create-an-aws-security-group">Step 3: Create an AWS Security Group<a class="headerlink" href="#step-3-create-an-aws-security-group" title="Permanent link">&para;</a></h3>
+<p>If you already have an existing security group with ports 80, 443 and 22 open, you can skip this step.</p>
+<p>Appsmith is a web application that requires ports 80 and 443 for HTTP access. It also requires port 22 to be accessible for SSH access. Please follow the steps <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-security-groups.html#creating-security-group">detailed here</a> to create a new security group.</p>
+<p>While creating the the new security group, please follow the steps <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-security-groups.html#adding-security-group-rule">detailed here</a> to edit the "Inbound Rules" and make ports 80, 443 and 22 accessible from anywhere.</p>
+<h3 id="step-4-deploy-appsmith-on-aws-cloud">Step 4: Deploy Appsmith On AWS Cloud<a class="headerlink" href="#step-4-deploy-appsmith-on-aws-cloud" title="Permanent link">&para;</a></h3>
+<p>The next step is to launch a cloud server with the Appsmith Amazon Machine Image (AMI) running on it. The AWS Console lets you do this in just a couple of clicks. Follow these steps:</p>
+<ol>
+<li>Navigate to the "<strong>Amazon</strong> <strong>EC2 dashboard"</strong>, select the “<strong>AMIs</strong>” option in the “<strong>Images</strong>” menu.</li>
+<li>Search for the Appsmith Stack by entering the search term "<strong>appsmith</strong>" in the search bar at the top.</li>
+<li>Select the image in the list of search results and click the “<strong>Launch</strong>” button.</li>
+<li>On the resulting detail page, review the available server sizes. Select the server size you wish to use and click “<strong>Review and Launch</strong>” to proceed.</li>
+<li>On the review page, click the “<strong>Edit security groups</strong>” link.</li>
+<li>On the “<strong>Configure Security Group</strong>” page, choose the option to “<strong>Select an existing security group</strong>”. Find the security group you created in Step 3 and select it. Click the “Review and Launch” button to proceed.</li>
+<li>Verify that the correct key pair (created in <a href="./#step-2-generate-an-ssh-key-pair"><strong>Step 2</strong></a>) will be used for the server.</li>
+<li>Confirm your selection by hitting the “<strong>Launch Instance</strong>” button.</li>
+</ol>
+<p>The AWS Console will now begin spinning up the new server.</p>
+<p><img alt="Launch" src="../../../.gitbook/assets/aws-launch.png" /></p>
+<p>The process usually takes a few minutes. Use the EC2 Dashboard to check the status of the server. Once the server has launched, you will be able to obtain its public IP address from the EC2 Dashboard, as shown below:</p>
+<p><img alt="EC2 Detail" src="../../../.gitbook/assets/aws-ec2-detail.png" /></p>
+<p>At this point, you should be able to browse to the cloud server, by entering the cloud server IP address or DNS name directly into your browser’s address bar. You should now see your web app home page as shown below:</p>
+<p><img alt="Login Page" src="../../../.gitbook/assets/aws-login-page.png" /></p>
+<h2 id="application-credentials">Application Credentials<a class="headerlink" href="#application-credentials" title="Permanent link">&para;</a></h2>
+<p>By default, Appsmith boots up with default user credentials that allow you to login without needing to sign up. The default username is: <code>appsmith@example.com</code>. There are two options for obtaining the password.</p>
+<h3 id="option-1-find-credentials-by-checking-the-system-log-on-the-aws-cloud-console-ec2">Option 1: Find Credentials By Checking The System Log On The AWS Cloud Console (EC2)<a class="headerlink" href="#option-1-find-credentials-by-checking-the-system-log-on-the-aws-cloud-console-ec2" title="Permanent link">&para;</a></h3>
+<p _="%" endhint="endhint">{% hint style="warning" %}
+IMPORTANT: The application password is only available in the system log for the first 24 hours after you first start the instance. We strongly recommend that you note it down immediately on the first boot and save it in a safe place, as you will be unable to access the instance console without it. We also recommend that you change it as soon as possible for security reasons.</p>
+<ul>
+<li>Go to your EC2 instances dashboard on AWS</li>
+<li>Select the instance</li>
+<li>From the “Actions” drop-down menu, select the “Get System Log” menu item.</li>
+</ul>
+<p><img alt="Select System Log" src="../../../.gitbook/assets/aws-select-system-log.png" /></p>
+<ul>
+<li>Review the system log until you find the application password. You will also find the default username printed in the logs.</li>
+</ul>
+<p><img alt="View System log" src="../../../.gitbook/assets/aws-system-log.png" /></p>
+<h3 id="option-2-find-credentials-by-connecting-to-your-application-through-ssh">Option 2: Find Credentials By Connecting To Your Application Through SSH<a class="headerlink" href="#option-2-find-credentials-by-connecting-to-your-application-through-ssh" title="Permanent link">&para;</a></h3>
+<p>The default application credentials are stored in a standalone file. To obtain these credentials at any time, follow these instructions:</p>
+<ul>
+<li>SSH into your server using your private key</li>
+<li>
+<p>Run the following command to see your application credentials:</p>
+<p><code>sudo cat /home/ubuntu/appsmith/credential</code></p>
+</li>
+</ul>
+<h2 id="updating-your-appsmith-installation">Updating Your Appsmith Installation<a class="headerlink" href="#updating-your-appsmith-installation" title="Permanent link">&para;</a></h2>
+<p>You can either choose to update the Appsmith installation manually or choose to enable auto-updates.</p>
+<h3 id="update-installation-manually">Update Installation Manually<a class="headerlink" href="#update-installation-manually" title="Permanent link">&para;</a></h3>
+<p>To update Appsmith manually, <code>ssh</code> into the <code>ec2</code> instance with the username <code>appsmith</code> and run the following command:</p>
+<pre><code>cd appsmith &amp;&amp; sudo docker-compose pull &amp;&amp; sudo docker-compose rm -fsv appsmith &amp;&amp; sudo docker-compose up -d
+</code></pre>
+<h3 id="enable-auto-updates">Enable Auto-Updates<a class="headerlink" href="#enable-auto-updates" title="Permanent link">&para;</a></h3>
+<p>If your Appsmith setup does not have <code>auto-update</code> enabled that is the <code>Watchtower</code> container is not running along with <code>Appsmith</code> in the <code>host machine</code>. Follow the steps below to enable <code>auto-update:</code></p>
+<ul>
+<li>SSH into the <code>ec2</code> instance with username <code>appsmith</code></li>
+<li>Change directory to <code>/appsmith</code></li>
+<li>Run the below command to stop and remove the container and its resources</li>
+</ul>
+<pre><code> docker-compose down 
+</code></pre>
+<ul>
+<li>Open the <code>docker-compose.yml</code> file with any text editor and uncomment the lines 13 to 23</li>
+</ul>
+<p><img alt="Uncomment the lines from 13 to 23" src="../../../.gitbook/assets/Docker-Compose-Yml-File-UnComment-for-AutoUpdates (1).png" /></p>
+<ul>
+<li>Save the file</li>
+<li>Run the below command</li>
+</ul>
+<pre><code> docker-compose up -d
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>If you encounter any errors during this process, check out our guide on <a href="../../../help-and-support/troubleshooting-guide/deployment-errors.md">debugging deployment errors</a>, if you are still facing an issue please reach out to <a href="mailto:support@appsmith.com">support@appsmith.com</a> or join our <a href="https://discord.com/invite/rBTTVJp">Discord Server</a> to directly speak to the Appsmith team!</p>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../instance-configuration/#configuring-docker-installations">Configuring Self Hosted Instances</a></li>
+<li><a href="../instance-management/">Managing the Appsmith instance</a></li>
+<li><a href="../../../learning-and-resources/tutorials/">Tutorials</a></li>
+</ul>
+
+
+
+
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../ansible/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ansible" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Ansible
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../aws-ecs/" class="md-footer__link md-footer__link--next" aria-label="Next: AWS ECS" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              AWS ECS
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+  
+      <script src="../../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  <script src="../../../../assets/javascripts/bundle.d665d539.min.js"></script>
+
+  </body>
+</html>

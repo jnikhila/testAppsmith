@@ -1,0 +1,1409 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open-source, low-code platform to Build, ship, and maintain internal tools">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>Asynchronous JavaScript Function Settings - Test Appsmith</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e38d1c16.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link rel="stylesheet" href="../../../../assets/stylesheets/main.7073df5a.min.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#asynchronous-javascript-function-settings" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://appsmith.com">
+     <strong>Appsmith Cloud</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://www.appsmith.com/blog-categories/tutorial">
+   <strong>Tutorials</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://community.appsmith.com/">
+    <strong>Forum</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://github.com/appsmithorg/appsmith">
+    <strong>GitHub</strong>
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Test Appsmith" class="md-header__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Test Appsmith
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Asynchronous JavaScript Function Settings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Test Appsmith" class="md-nav__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    Test Appsmith
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../introduction/" class="md-nav__link">
+        What is Appsmith?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/start-building/" class="md-nav__link">
+        Build Your First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Getting%20Started/setup/">Self Hosting</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Self Hosting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Self Hosting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Getting%20Started/setup/installation-guides/">Installation Guides</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Guides" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_2" type="checkbox" id="__nav_2_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Getting%20Started/setup/installation-guides/docker/">Docker</a>
+          
+            <label for="__nav_2_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/installation-guides/docker/migrate/" class="md-nav__link">
+        Migrate from Multi-Container setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_3" type="checkbox" id="__nav_2_3_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Getting%20Started/setup/installation-guides/kubernetes/">Kubernetes</a>
+          
+            <label for="__nav_2_3_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/installation-guides/kubernetes/migrate-k8s/" class="md-nav__link">
+        Migrate from multi-container setup (k8s)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/installation-guides/ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/installation-guides/aws-ami/" class="md-nav__link">
+        AWS AMI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/installation-guides/aws-ecs/" class="md-nav__link">
+        AWS ECS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/installation-guides/cloudjiffy/" class="md-nav__link">
+        CloudJiffy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/installation-guides/digitalocean/" class="md-nav__link">
+        DigitalOcean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/installation-guides/heroku/" class="md-nav__link">
+        Heroku
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Getting%20Started/setup/instance-configuration/">Installation Configuration</a>
+          
+            <label for="__nav_2_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2" type="checkbox" id="__nav_2_3_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Getting%20Started/setup/instance-configuration/authentication/">Authentication</a>
+          
+            <label for="__nav_2_3_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Authentication" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2_2" type="checkbox" id="__nav_2_3_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/">Open ID Connect</a>
+          
+            <label for="__nav_2_3_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Open ID Connect" data-md-level="5">
+        <label class="md-nav__title" for="__nav_2_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Open ID Connect
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/auth0/" class="md-nav__link">
+        Auth0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/okta/" class="md-nav__link">
+        Okta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/ping-identity/" class="md-nav__link">
+        Ping Identity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/active-directory/" class="md-nav__link">
+        Active Directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Core Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Core Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../building-ui/">Building UI</a>
+          
+            <label for="__nav_2_4_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Building UI" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Building UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_2" type="checkbox" id="__nav_2_4_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_2">
+          Designing an Application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Designing an Application" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Designing an Application
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../building-ui/designing-an-application/app-theming/" class="md-nav__link">
+        App Theming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Advanced Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1">
+          Custom Authentication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Authentication" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Advanced%20Concepts/how-to-implement-custom-authentication-on-appsmith/" class="md-nav__link">
+        How to implement custom authentication on Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1_2" type="checkbox" id="__nav_2_5_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1_2">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Advanced%20Concepts/more/backup-restore/" class="md-nav__link">
+        Migrate Applications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-define-an-asynchronous-function-in-appsmith" class="md-nav__link">
+    How to Define an Asynchronous Function in Appsmith?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings" class="md-nav__link">
+    Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-on-page-load" class="md-nav__link">
+    RUN ON PAGE LOAD
+  </a>
+  
+    <nav class="md-nav" aria-label="RUN ON PAGE LOAD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-run-on-page-load" class="md-nav__link">
+    Configure run on page load
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirm-before-calling" class="md-nav__link">
+    CONFIRM BEFORE CALLING
+  </a>
+  
+    <nav class="md-nav" aria-label="CONFIRM BEFORE CALLING">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-confirm-before-calling" class="md-nav__link">
+    Configure confirm before calling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-asynchronous-settings" class="md-nav__link">
+    When to use Asynchronous Settings?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+
+
+<h1 id="asynchronous-javascript-function-settings">Asynchronous JavaScript Function Settings<a class="headerlink" href="#asynchronous-javascript-function-settings" title="Permanent link">&para;</a></h1>
+<p>The asynchronous function allows you to choose when you want to execute code. For example, you may want to delay the query execution or fetch the data on demand.</p>
+<h2 id="how-to-define-an-asynchronous-function-in-appsmith">How to Define an Asynchronous Function in Appsmith?<a class="headerlink" href="#how-to-define-an-asynchronous-function-in-appsmith" title="Permanent link">&para;</a></h2>
+<p>In the Appsmith environment, a function is termed as <strong>async</strong> if you are performing one of the below actions:</p>
+<ul>
+<li>
+<p>You have a keyword (async) that marks the asynchronous execution of the function.</p>
+<p><code>export default{
+    functionName: async() =&gt; {
+       //use async-await or promises
+    }
+}</code>
+* You have any in-built Appsmith functions like <code>showModal(), showAlert()</code>, etc., added in the function block.
+*   You want to execute a query or call an API on run time. For example, you have an API <code>GetUsersList,</code> and you want to call this API on runtime, that is, whenever the JS Object function <code>callAPI()</code> is executed. Your function may look as below:</p>
+<p><code>export default {
+   callAPI: () =&gt; {
+      GetUsersList.run();
+   }
+ }</code></p>
+</li>
+</ul>
+<p>The line of code <code>GetUsersList.run()</code> marks the function <code>callAPI()</code> for asynchronous execution and hence <code>callAPI</code> function is considered as async.</p>
+<p>A JavaScript Editor in Appsmith provides some additional settings for asynchronous functions that will help you add more configurations.</p>
+<p>You can specify the settings in the <strong>Settings</strong> tab on the Appsmith JS Editor.</p>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">&para;</a></h2>
+<p>You’ll see the <strong>Settings</strong> tab next to <strong>Code</strong> whenever you have added an <strong>asynchronous function</strong> to the JS Object. Head to the <strong>Settings</strong> tab and click on it to reveal additional configurations.</p>
+<p>Let’s quickly dive into these configurations to understand how they help you make your application behavior better.</p>
+<p>Navigate to <strong>JS Object</strong> —&gt; You’ll see <strong>Settings</strong> next to <strong>Code</strong></p>
+<p><img alt="How to navigate to JS Object Settings for asynchronous function?" src="../../../.gitbook/assets/JSObject-Settings-Tab.png" /></p>
+<p>Click on <strong>Settings</strong> to reveal configurations.</p>
+<p><img alt="Configurations available for asynchronous functions" src="../../../.gitbook/assets/Settings-Configurations.png" /></p>
+<p>You get two settings to configure for asynchronous functions:</p>
+<ul>
+<li>RUN ON PAGE LOAD</li>
+<li>CONFIRM BEFORE CALLING</li>
+</ul>
+<p>The settings are available at the function level. For <strong>every</strong> asynchronous function defined, you’ll have a corresponding configuration available for a run on page load and confirm before calling. Refer to the screenshot below, where you can see that the functions - <strong>myFun2</strong> and <strong>showData</strong> have configurations available that you can define for them individually.</p>
+<p><img alt="The asynchronous function configurations are available for each async function defined in a JS Object." src="../../../.gitbook/assets/Async-Setting-Function-Level.png" /></p>
+<h3 id="run-on-page-load">RUN ON PAGE LOAD<a class="headerlink" href="#run-on-page-load" title="Permanent link">&para;</a></h3>
+<p>As the name suggests, you can use the configuration to mark that your function will be executed whenever a page is loaded. For example, you have a page <code>User Listing</code> and have added a JS object with the function <code>GetUserRole</code> which fetches the user’s role. You want that the query should be executed at the time of page load so that the logged-in user will be able to see the user listing. To get this working, you have to set the <strong>RUN ON PAGE LOAD</strong> configuration as <strong>YES</strong> for the <code>GetUserRole</code> function. Once the configuration is in place, the function <code>GetUserRole</code> will be executed whenever the app is loaded and the response generated by it will be displayed on the page.</p>
+<p>{% embed url="<a href="https://youtu.be/yo2-XEt_EuU">https://youtu.be/yo2-XEt_EuU</a>" %}</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+By default, <strong>RUN ON PAGE LOAD</strong> is turned <strong>ON</strong> (<strong>Yes</strong> selected) for functions that display data on a widget. That is, the widget binds to the response generated by <strong><code>JSObjectName.asynFunctionName.data</code></strong>. In this case, the on-page load is automatically set as true. You can explicitly change this setting to suit your logic in the <strong>Settings</strong> tab.</p>
+<p>If you wish to delay the call of function on demand, then select <strong>No</strong>. It marks that the function will not be called on page load, and the execution will be deferred until called on demand by calling the function.</p>
+<h4 id="configure-run-on-page-load">Configure run on page load<a class="headerlink" href="#configure-run-on-page-load" title="Permanent link">&para;</a></h4>
+<p>On Appsmith, you can bind execution of JS Objects on page load in either of two ways:</p>
+<p><strong>Bind Response to Widget</strong></p>
+<p>Whenever you bind a <a href="../../data-access-and-binding/querying-a-database/">query</a> or <a href="../../connecting-to-data-sources/authentication/">API</a> response to a <a href="../../../reference/widgets/">widget</a>, Appsmith automatically sets the execution of the corresponding API or Query on page load. For example, you have a widget that refers to the data property of the JavaScript async function by adding <code>{{JSObject.myFun.data}}</code>, at that time Appsmith marks the execution of that query/API on page load. You can modify the same by navigating to <strong>JSObject</strong> → <strong>Settings</strong> → <strong>RUN ON PAGE LOAD</strong> → Select <strong>No</strong>.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/urnRIZ2xMJk">https://youtu.be/urnRIZ2xMJk</a>" %}
+RUN ON PAGE LOAD Set to Yes when you bind function data to a widget</p>
+<p>Here’s a quick snapshot of how Appsmith triggers a query or API execution on page load:</p>
+<ul>
+<li>Add a <a href="../../../reference/widgets/table/">table</a> widget (<em>Table1</em>), and add a function in <code>JSObject5</code> that calls an API <em><code>getUsers</code></em>. The <em><code>getUsers</code></em> API call is embedded in the <em><code>showData</code></em> function and generates a user listing.</li>
+</ul>
+<p><img alt="Call a getUsers API in the showData JS function" src="../../../.gitbook/assets/Bind-Response-to-widget (1).png" /></p>
+<ul>
+<li>Bind the response generated by <code>showData</code> to table widget <code>Table1</code> by adding the below code in the <code>Table Data</code> property available on the property pane of the <a href="../../../reference/widgets/table/#table-data">Table</a> widget.</li>
+</ul>
+<pre><code>{{JSObject5.showData.data}} // behind the scenes Appsmith 
+                           // marks execution of showData on page load                      
+                          // to get the response and bind it to the table data 
+</code></pre>
+<p><img alt="showData function called on page load" src="../../../.gitbook/assets/Show-Data-Called-OnPageLoad.png" /></p>
+<p><strong>Asynchronous Function Setting</strong></p>
+<p>Especially for <a href="./#how-to-define-asynchronous-function-in-appsmith">asynchronous functions</a>, you can explicitly mark the execution of an async function on page load for the corresponding JS Object.</p>
+<p>Navigate to <strong>JS Object</strong> —&gt; Click on <strong>Settings</strong> —&gt; Select <strong>Yes</strong> for <strong>RUN ON PAGE LOAD</strong> next to the JS function. You are all set. Appsmith will take care of executing the async function on page load for you.</p>
+<p><img alt="How to set run on page load for async function?" src="../../../.gitbook/assets/Async Function Setting - On Page Load.png" /></p>
+<p>As shown in the screenshot below, you can see that the <code>showData</code> function is called <strong>on page load</strong>, and <code>Table1</code> displays the data.</p>
+<p><img alt="Data displayed in the table widget" src="../../../.gitbook/assets/Show-Data-Data-Displayed-InTable.png" /></p>
+<h3 id="confirm-before-calling">CONFIRM BEFORE CALLING<a class="headerlink" href="#confirm-before-calling" title="Permanent link">&para;</a></h3>
+<p>With this setting, you can generate a confirmation pop-up and take the user’s input for executing the function. For example, the JS object has the function <code>deletePermission</code> which calls an API that deletes the database’s permission. You would want to ensure that the user wants to delete permission, in which case, you would like to show a confirmation dialogue. The confirmation dialog ensures that the user wants to perform a delete action. A user can choose <strong>Yes</strong> to delete or can decline the same by choosing <strong>No</strong>. Thus <code>Confirm Before Calling</code> comes in handy to protect against users accidentally running destructive operations.</p>
+<p><img alt="A confirmation dialog is shown to the user before execution on myFun2" src="../../../.gitbook/assets/Confirmation Dialog.png" /></p>
+<h4 id="configure-confirm-before-calling">Configure confirm before calling<a class="headerlink" href="#configure-confirm-before-calling" title="Permanent link">&para;</a></h4>
+<p>Confirmation is like a nudge given to the user before executing a function. It ensures that the user is aware of the action that would be performed, and the same is not triggered by chance. A confirmation setting can only be defined explicitly from the Settings tab.</p>
+<p>Navigate to <strong>JS Object</strong> —&gt; Click on <strong>Settings</strong> —&gt; Select <strong>Yes</strong> for <strong>CONFIRM BEFORE CALLING</strong> next to the JS function. You are all set. Appsmith will take care of executing and showing the confirmation dialogue to the user whenever the action is triggered.</p>
+<p><img alt="Configurations for CONFIRM BEFORE CALLING" src="../../../.gitbook/assets/Async Function Settings-Confirm-Before-Calling (1).png" /></p>
+<h2 id="when-to-use-asynchronous-settings">When to use Asynchronous Settings?<a class="headerlink" href="#when-to-use-asynchronous-settings" title="Permanent link">&para;</a></h2>
+<p>Asynchronous function settings enable users to create complex workflows by executing functions before the application loads, allowing the data manipulation logic to run and make the desired outcome — secure function execution with a confirmation before you want application users to execute any critical operations.</p>
+<p>Let’s understand the settings deeper with examples.</p>
+<p>For example, you would want to apply restrictions in your application based on the user’s domain. That is, anonymous users (users who are not a part of your domain) cannot access certain application pages. You can quickly implement this by creating a function that uses the asynchronous function setting- Run on page load.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/6wCD_fgd8TQ">https://youtu.be/6wCD_fgd8TQ</a>" %}
+Appsmith users Vs Non-Appsmith users</p>
+<p>Here’s a quick snapshot of steps that you can take to create this logic:</p>
+<ul>
+<li>Create an application and add two pages to it</li>
+<li>First Page (UserListingForAppsmithUsers)- Add a table, and rename it to <code>UserListing</code> which displays the data generated by the <code>showUserListing</code> function of the <code>DataLoader</code> JS object. The function generates a list of users.</li>
+<li>Second Page (AnonymousUser) - Displays a message to the user.</li>
+<li>Create a JS object <code>DataLoader</code> and add a function <code>showUserListing</code> <em>that checks whether the user is logged in or not</em>._ The function will verify the below logic:</li>
+<li>If the user is logged in, then the <code>GetUserList</code> API will be called, and the response will be generated</li>
+<li>If the user is not logged in or is not an appsmith user, redirect the user to the <code>AnonymousUser</code> page.</li>
+<li>Mark function <code>showUserListing</code> of JS Object - DataLoader to run on page load by selecting <strong>Yes</strong>.</li>
+</ul>
+<p><strong>UserListingForAppsmithUsers</strong> - DataLoader JS object Code. You can see that a function <code>showUserListing</code> is marked for asynchronous execution by defining the <code>async</code> keyword.</p>
+<pre><code>export default {
+    showUserListing: async () =&gt; {
+        //use async-await or promises
+        if(appsmith.user.isAnonymous) {
+              navigateTo(&quot;AnonymousUser&quot;);
+        }
+        //verify if the logged-in user is from appsmith
+        if(appsmith.user.email.match(&quot;appsmith&quot;)){
+          return GetUserList.run();
+        }else{
+          navigateTo(&quot;AnonymousUser&quot;);
+        }       
+    }
+}
+</code></pre>
+<p>For logged-in appsmith users, a user listing is shown as the<code>GetUserList</code> API is executed:</p>
+<p><img alt="The user listing is displayed to logged-in appsmith users" src="../../../.gitbook/assets/LoggedIn-Appsmith-Users-User-Listing-Shown.png" /></p>
+<p><strong>Anonymous users -</strong> Whenever the application renders, the <code>showUserListing</code> function is executed. The function determines whether the user is anonymous. You can use the property of a user object <code>isAnonymous</code> to check the user's logged-in status.</p>
+<pre><code>appsmith.user.isAnonymous
+</code></pre>
+<p><img alt="An anonymous user is shown the page with an unauthorized message" src="../../../.gitbook/assets/Anonymous-Users.png" /></p>
+<p>Suppose the user is <strong>not</strong> logged in, then <code>appsmith.user.isAnonymous</code> <em>returns <code>true</code>  <strong>and redirects</strong> the user to the <code>AnonymousUser</code> page and displays the message.</em></p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You are not authorized to view user data.</p>
+<p>If the user is <strong>logged in</strong> <code>appsmith.user.isAnonymous</code> returns <code>false</code> and the logic is executed to verify if the logged-in user is an Appsmith user. If the user is an Appsmith user, <code>GetUserList</code> API is called to fetch the user listing. The execution is completed, and the response is generated, displayed in the <code>UserListing</code> table.</p>
+<p>You can use authentication and authorization using the Async function settings. To get started; <a href="https://app.appsmith.com/app/custom-auth-google-sso/login-62a99de284b91337251a7dd3">view and fork the authentication application</a>, <a href="https://app.appsmith.com/applications/62a069e0e56c5566a628df0a/pages/62a069e0e56c5566a628df0d">view and fork the authorization application</a>.</p>
+<p>You can do authentication and authorization using the Async function settings. To get started, you can use one of the below applications:</p>
+<ol>
+<li><a href="https://app.appsmith.com/app/custom-auth-google-sso/login-62a99de284b91337251a7dd3">View and fork the authentication application</a></li>
+<li><a href="https://app.appsmith.com/applications/62a069e0e56c5566a628df0a/pages/62a069e0e56c5566a628df0d">View and fork the authorization application</a></li>
+</ol>
+<p>With the out-of-the-box settings provided for async functions, you can manage the execution of your asynchronous functions and create a better user experience.</p>
+
+
+
+
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+  
+      <script src="../../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  <script src="../../../../assets/javascripts/bundle.d665d539.min.js"></script>
+
+  </body>
+</html>

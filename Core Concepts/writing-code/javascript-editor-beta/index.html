@@ -1,0 +1,1729 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open-source, low-code platform to Build, ship, and maintain internal tools">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>JS Objects - Test Appsmith</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e38d1c16.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link rel="stylesheet" href="../../../assets/stylesheets/main.7073df5a.min.css">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#js-objects" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <a href="https://appsmith.com">
+     <strong>Appsmith Cloud</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://www.appsmith.com/blog-categories/tutorial">
+   <strong>Tutorials</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://community.appsmith.com/">
+    <strong>Forum</strong>
+  </a>
+  <span>   |   </span>
+  <a href="https://github.com/appsmithorg/appsmith">
+    <strong>GitHub</strong>
+  </a>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Test Appsmith" class="md-header__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Test Appsmith
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              JS Objects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="orange" data-md-color-accent="grey"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Test Appsmith" class="md-nav__button md-logo" aria-label="Test Appsmith" data-md-component="logo">
+      
+  <img src="../../../assets/images/Appsmith-Logo.png" alt="logo">
+
+    </a>
+    Test Appsmith
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../introduction/" class="md-nav__link">
+        What is Appsmith?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/start-building/" class="md-nav__link">
+        Build Your First App
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/">Self Hosting</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Self Hosting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Self Hosting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/installation-guides/">Installation Guides</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Guides" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_2" type="checkbox" id="__nav_2_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/installation-guides/docker/">Docker</a>
+          
+            <label for="__nav_2_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Docker" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Docker
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/docker/migrate/" class="md-nav__link">
+        Migrate from Multi-Container setup
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_3" type="checkbox" id="__nav_2_3_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/installation-guides/kubernetes/">Kubernetes</a>
+          
+            <label for="__nav_2_3_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Kubernetes" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/kubernetes/migrate-k8s/" class="md-nav__link">
+        Migrate from multi-container setup (k8s)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/ansible/" class="md-nav__link">
+        Ansible
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/aws-ami/" class="md-nav__link">
+        AWS AMI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/aws-ecs/" class="md-nav__link">
+        AWS ECS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/cloudjiffy/" class="md-nav__link">
+        CloudJiffy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/digitalocean/" class="md-nav__link">
+        DigitalOcean
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/installation-guides/heroku/" class="md-nav__link">
+        Heroku
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/instance-configuration/">Installation Configuration</a>
+          
+            <label for="__nav_2_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Installation Configuration" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Installation Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2" type="checkbox" id="__nav_2_3_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/instance-configuration/authentication/">Authentication</a>
+          
+            <label for="__nav_2_3_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Authentication" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_2_2" type="checkbox" id="__nav_2_3_3_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/">Open ID Connect</a>
+          
+            <label for="__nav_2_3_3_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Open ID Connect" data-md-level="5">
+        <label class="md-nav__title" for="__nav_2_3_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Open ID Connect
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/auth0/" class="md-nav__link">
+        Auth0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/okta/" class="md-nav__link">
+        Okta
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/ping-identity/" class="md-nav__link">
+        Ping Identity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Getting%20Started/setup/instance-configuration/authentication/openid-connect-oidc/active-directory/" class="md-nav__link">
+        Active Directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4">
+          Core Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Core Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Core Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" type="checkbox" id="__nav_2_4_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../building-ui/">Building UI</a>
+          
+            <label for="__nav_2_4_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Building UI" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Building UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1_2" type="checkbox" id="__nav_2_4_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_1_2">
+          Designing an Application
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Designing an Application" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Designing an Application
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building-ui/designing-an-application/app-theming/" class="md-nav__link">
+        App Theming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          Advanced Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced Concepts" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1">
+          Custom Authentication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Custom Authentication" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Custom Authentication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Advanced%20Concepts/how-to-implement-custom-authentication-on-appsmith/" class="md-nav__link">
+        How to implement custom authentication on Appsmith
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1_2" type="checkbox" id="__nav_2_5_1_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_1_2">
+          More
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="More" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_5_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          More
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Advanced%20Concepts/more/backup-restore/" class="md-nav__link">
+        Migrate Applications
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#js-object" class="md-nav__link">
+    JS Object
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calling-a-js-object-function" class="md-nav__link">
+    Calling a JS Object Function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-js-functions" class="md-nav__link">
+    Types of JS Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of JS Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#synchronous" class="md-nav__link">
+    Synchronous
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asynchronous" class="md-nav__link">
+    Asynchronous
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-javascript-editor" class="md-nav__link">
+    Working with JavaScript Editor
+  </a>
+  
+    <nav class="md-nav" aria-label="Working with JavaScript Editor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-tab" class="md-nav__link">
+    Response Tab
+  </a>
+  
+    <nav class="md-nav" aria-label="Response Tab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute-function" class="md-nav__link">
+    Execute Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linting-errors" class="md-nav__link">
+    Linting Errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errors-tab" class="md-nav__link">
+    Errors Tab 
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs-tab" class="md-nav__link">
+    Logs Tab
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snippets" class="md-nav__link">
+    Snippets
+  </a>
+  
+    <nav class="md-nav" aria-label="Snippets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appsmith-snippet-library" class="md-nav__link">
+    Appsmith Snippet Library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugger-statements" class="md-nav__link">
+    Debugger Statements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-complex-code" class="md-nav__link">
+    Writing Complex Code
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Complex Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-case" class="md-nav__link">
+    Use case
+  </a>
+  
+    <nav class="md-nav" aria-label="Use case">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-workflow" class="md-nav__link">
+    Code Workflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-limitations" class="md-nav__link">
+    Current Limitations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+
+
+<h1 id="js-objects">JS Objects<a class="headerlink" href="#js-objects" title="Permanent link">&para;</a></h1>
+<p>Writing extensive code without a full-fledge editor could be challenging. The JavaScript Editor(beta) in Appsmith allows you to create a reusable set of JavaScript functions that you can call within JavaScript bindings across a Page’s component to write complex code with ease. In Appsmith, it’s referred to as <code>JS Objects</code>.</p>
+<p>{% embed url="<a href="https://www.youtube.com/watch?v=tpbY5Jti9d4">https://www.youtube.com/watch?v=tpbY5Jti9d4</a>" %}</p>
+<h3 id="js-object">JS Object<a class="headerlink" href="#js-object" title="Permanent link">&para;</a></h3>
+<p>A JS Object is an entity comprised of multiple functions and variables. It is a reusable component you can refer to in other JS Objects, allowing you to create a neatly organized set of hierarchies.</p>
+<p><strong>How to Create a JS Object?</strong></p>
+<p>You can create new JS Objects from the Entity Explorer.</p>
+<p>Navigate to <strong>Entity Explorer</strong> &gt;&gt; Click (+) next to <strong>Queries/JS</strong> &gt;&gt; Select <strong>New JS Object</strong>.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/8kzyYaHnwPw">https://youtu.be/8kzyYaHnwPw</a>" %}
+How to add a JS Object?</p>
+<p>The screen below shows a JS Object added to the page. The default code template that supports <a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export">export default</a>.</p>
+<p><img alt="When you add a new JS Object" src="../../../.gitbook/assets/JavaScript Editor  New JS Object.png" /></p>
+<ol>
+<li>Give a meaningful name to the JSObject</li>
+<li>Code editor where you can write JavaScript Code</li>
+<li>Settings are available for <a href="./#asynchronous">Async functions</a> only.</li>
+<li>Define variables</li>
+<li>Define functions</li>
+<li>Use the editor to do several jobs, to name a few:</li>
+<li>Write your code</li>
+<li>Call in-built or user-defined functions</li>
+<li>API calls</li>
+<li>Database query execution</li>
+<li>Add multiple functions to the JS Object</li>
+<li>Access JS Objects from Explorer available under JS Objects Group</li>
+</ol>
+<p _="%" endhint="endhint">{% hint style="info" %}
+The support for the named <a href="https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export">exports</a> is not available for exporting functions. However, you can expose functions that are part of the JS Object using <strong>default</strong> export.</p>
+<h2 id="calling-a-js-object-function">Calling a JS Object Function<a class="headerlink" href="#calling-a-js-object-function" title="Permanent link">&para;</a></h2>
+<p>You can call the functions defined in a JS Object by using the notation <code>{{ JS_OBJECT_NAME.Function_Name }}</code> embedded in a mustache sign as shown in the figure below:</p>
+<p><img alt="How to call a function defined in a JS Object?" src="../../../.gitbook/assets/call_JS_object (1) (1) (1) (1) (1) (2) (2).png" /></p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+The JS Objects defined are available across APIs, Queries, or other JS Objects defined for <strong>a particular page,</strong> i.e., the JS Objects have <strong>page-level access</strong> and are <strong>not</strong> accessible <strong>across pages</strong>.</p>
+<h2 id="types-of-js-functions">Types of JS Functions<a class="headerlink" href="#types-of-js-functions" title="Permanent link">&para;</a></h2>
+<p>You can write different types of functions in a JS Object that can be <strong>Synchronous</strong> or <strong>Asynchronous</strong>.</p>
+<h3 id="synchronous">Synchronous<a class="headerlink" href="#synchronous" title="Permanent link">&para;</a></h3>
+<p>As the name suggests, synchronous means to be in a sequence, i.e., every statement of the code gets executed one by one. So, a statement must wait for the earlier statement to complete its execution.</p>
+<p>For example, the below code snippet shows a data filter:</p>
+<pre><code>Api.data.filter(() =&gt; {}); // filtering data 
+</code></pre>
+<p>Here data filtering is the process of selecting a subset of data you want to choose for viewing or analysis. To filter the data, you must traverse the whole dataset one after the other and segregate it if it matches the filter criteria. Thus, you need synchronous execution.</p>
+<h3 id="asynchronous">Asynchronous<a class="headerlink" href="#asynchronous" title="Permanent link">&para;</a></h3>
+<p>The word asynchronous means not occurring at the same time. You may sometimes need to fetch data from the server or execute a function with a delay, something you do not anticipate occurring at the current time.</p>
+<p>For example, <code>Promises</code>, <code>Api.run()</code>, <code>Query.Run()</code>, Appsmith platform functions(eg. <code>showModal</code>). It basically lets you delay the execution of code embedded in an async function and is executed when needed.</p>
+<p>You can <a href="asynchronous-javascript-function-settings/">configure additional settings for the asynchronous function</a> and enhance the user experience.</p>
+<h2 id="working-with-javascript-editor">Working with JavaScript Editor<a class="headerlink" href="#working-with-javascript-editor" title="Permanent link">&para;</a></h2>
+<p>JavaScript Editor is an extensive editor that provides additional functionalities while writing code. You can do a lot with it, like:</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/agyvQNFGGIY">https://youtu.be/agyvQNFGGIY</a>" %}
+A quick walkthrough of JavaScript Editor</p>
+<table>
+<thead>
+<tr>
+<th><strong>What do you get?</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Response Tab</strong></td>
+<td>Execute each function at the time of development and view the output in the Response tab</td>
+</tr>
+<tr>
+<td><strong>Linting Errors</strong></td>
+<td>Get the linting errors caught right in the editor</td>
+</tr>
+<tr>
+<td><strong>Errors Tab</strong></td>
+<td>Check for the syntax errors in the Errors tab</td>
+</tr>
+<tr>
+<td><strong>Logs Tab</strong></td>
+<td>Check the function execution log in the Logs tab</td>
+</tr>
+<tr>
+<td><strong>Snippets</strong></td>
+<td>Insert ready-to-use snippets</td>
+</tr>
+<tr>
+<td><strong>Debugger Statements</strong></td>
+<td>Use debugger statements to pause the execution</td>
+</tr>
+</tbody>
+</table>
+<p>To understand how JavaScript Editor works, let’s create a <strong>Hello World JS Object</strong>.</p>
+<ul>
+<li>Navigate to <strong>Explorer</strong> &gt;&gt; Click <strong>(+)</strong> for <strong>Queries/JS</strong> &gt;&gt; Select <strong>New JS Object.</strong></li>
+<li>You’ll see the default code template. Add the below code snippet:</li>
+</ul>
+<pre><code>export default {
+   hello: () =&gt; {
+      return “Hello World”;
+   }
+}
+</code></pre>
+<h3 id="response-tab">Response Tab<a class="headerlink" href="#response-tab" title="Permanent link">&para;</a></h3>
+<p>The response tab displays the <strong>output</strong> generated by the functions defined in a JS Object.</p>
+<h4 id="execute-function">Execute Function<a class="headerlink" href="#execute-function" title="Permanent link">&para;</a></h4>
+<p>You can click <strong>Run</strong> available on the top right corner to execute the JS function. If your JS object has only one function defined, the editor defaults the function name. But if your JS Object has more than one function defined, you can select the function you want to execute and then click <strong>Run</strong>.</p>
+<p><img alt="Response Tab" src="../../../.gitbook/assets/JavaScript Editor  Response Tab.png" /></p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+If your code has syntax errors, the <strong>Run</strong> button is disabled and blocks the execution. You can resolve the errors and then execute the function using <strong>Run</strong>.</p>
+<p>You can verify the response generated by the <code>hello()</code> in the Response tab, as shown in the screenshot above.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You can execute the function by clicking the <strong>RUN</strong> button or by using a shortcut key (<strong>CMD+ENTER</strong> or <strong>CTRL + ENTER</strong>)</p>
+<h3 id="linting-errors">Linting Errors<a class="headerlink" href="#linting-errors" title="Permanent link">&para;</a></h3>
+<p>The Javascript Editor automatically checks your source code for programmatic errors. If the code is not programmatically correct, it will highlight the error using a red-colored lint below the erroneous code. For example, the syntax error where the <code>return</code> is misspelled as <code>retu</code> is also captured by linting.</p>
+<p><img alt="Linting also captures the Syntax error and highlights it with a red line below it." src="../../../.gitbook/assets/JavaScript Editor  Linting Errors.png" /></p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You can inspect the <code>error</code> in detail from the <strong>Errors</strong> tab.</p>
+<h3 id="errors-tab">Errors Tab <a href="#errors-tab" id="errors-tab"></a><a class="headerlink" href="#errors-tab" title="Permanent link">&para;</a></h3>
+<p>The errors tab displays all types of errors generated by the code execution. The errors could be comprised of <strong>Syntax Errors</strong>, <strong>Run time errors</strong> like <strong>Parsing Errors</strong>, and more.</p>
+<p><img alt="Errors Tab" src="../../../.gitbook/assets/JavaScript Editor  Error Tab.png" /></p>
+<h3 id="logs-tab">Logs Tab<a class="headerlink" href="#logs-tab" title="Permanent link">&para;</a></h3>
+<p>The Logs tab shows the execution of functions with a timestamp. You can also open the Logs Tab by clicking a debug icon at the right bottom of the console (as shown in the screenshot below).</p>
+<p><img alt="Logs Tab" src="../../../.gitbook/assets/JavaScript Editor  Logs Tab.png" /></p>
+<p>The logs tab gives you the flexibility to filter logs either by writing keywords in the <strong>Filter box</strong> or selecting the <strong>type of log</strong> from the <strong>dropdown</strong>.</p>
+<h3 id="snippets">Snippets<a class="headerlink" href="#snippets" title="Permanent link">&para;</a></h3>
+<p>You’ll see a Snippets button available on the right top side of the editor. Click on it to open the Appsmith Snippet Library.</p>
+<p><img alt="Snippets Button" src="../../../.gitbook/assets/JavaScript Editor  Snippets.png" /></p>
+<h4 id="appsmith-snippet-library">Appsmith Snippet Library<a class="headerlink" href="#appsmith-snippet-library" title="Permanent link">&para;</a></h4>
+<p>You can search and copy the Snippets from the Appsmith Snippet Library and use them in the JavaScript Editor. You can then build on the code snippet to add your code or use it as is.</p>
+<p><img alt="Appsmith Snippet Library" src="../../../.gitbook/assets/JavaScript Editor  Snippets  Appsmith Snippet Library.png" /></p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+Appsmith is actively working on expanding the <strong>Snippets Library</strong>. Please reach out to us on<a href="https://discord.com/invite/rBTTVJp"> Discord</a> or<a href="https://community.appsmith.com/"> Community Forms</a> if you wish to contribute to the library.</p>
+<h3 id="debugger-statements">Debugger Statements<a class="headerlink" href="#debugger-statements" title="Permanent link">&para;</a></h3>
+<p>The debugger statement in JavaScript will help you pause the code execution during the development phase. The debugger lets you visualize the data and operations when executed on runtime.</p>
+<p>You’ll have to use the <code>debugger</code> keyword in the code snippet to pause the execution.</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You must have the <strong>browser’s developer console</strong> <strong>open</strong> to see the debugger in action.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/ZjleR7iM-xo">https://youtu.be/ZjleR7iM-xo</a>" %}
+How to use Debugger statements in JavaScript Editor?</p>
+<p>For example, you are returning user information fetched from the userDetailsAPI in the JS function, and you want to see the value returned by the API during execution. To get this working, you can use a debugger statement as below:</p>
+<pre><code>export default {
+    getUserDetails: async () =&gt; {
+        const userInfo = await userDetailsAPI.run();
+        debugger; // the execution will be paused at this point 
+        // and you can check the value of the userInfo variable
+        console.log(“user information: “+userInfo); // the logs will be 
+        // printed in the browser 
+        // console.
+        return userInfo;
+    }
+}
+</code></pre>
+<h2 id="writing-complex-code">Writing Complex Code<a class="headerlink" href="#writing-complex-code" title="Permanent link">&para;</a></h2>
+<p>When you build applications, it’s often more than just a CRUD operation from a single datasource. You might integrate with multiple APIs or want to have the dataset created by querying multiple tables, which leads to traversing data, filtering, or manipulating the response by calling different APIs. You can write complex logic with ease using JavaScript Editor.</p>
+<p>To understand it further, let’s look at a use case and build different workflows.</p>
+<h3 id="use-case">Use case<a class="headerlink" href="#use-case" title="Permanent link">&para;</a></h3>
+<p>You want to create a developer task tracker dashboard, update developer information, and add some permissions like making sure only admins can access the dashboard.</p>
+<h4 id="code-workflow">Code Workflow<a class="headerlink" href="#code-workflow" title="Permanent link">&para;</a></h4>
+<p>Let’s create a task tracker dashboard that gives you an overview of progress on tasks. You have a query called “<em>developers</em>,” which fetches the developers’ information like name, email, etc. You have an API <code>getAllDeveloperTaskStatus</code> that gives you a task list with the status for each developer.</p>
+<p><strong>Task Tracker</strong></p>
+<p>You want to display the developer details in a tabular format so that you can choose a table widget. You would want to show a total number of tasks like total tasks, no of completed tasks, no of to-do tasks, and no of in-progress tasks. You can achieve this by adding a JS Object and creating one function in it, “<em>getTaskList</em>.” Let’s write the code for this function using the JavaScript Editor.</p>
+<ul>
+<li>In the <strong>Explorer</strong> tab, &gt;&gt; click <strong>(+)</strong> next to <code>JS Objects</code> &gt;&gt; Select <code>New JS Object</code>.</li>
+<li>It’ll open a JS Editor. Rename the JS Object to <code>Utils</code></li>
+<li>Add the below code snippet in the <strong>Code</strong> tab.</li>
+</ul>
+<pre><code>export default {
+    getAllDeveloperTaskStatus: () =&gt; {
+    return developers.data.map((developer) =&gt; {
+     const developerId = developer.id;
+     const taskList = developerTaskStatus.data.filter((alltask) =&gt; alltask.userId === String(developerId)); // fetch all the tasks for the given developer
+     const completedTaskList = taskList.filter((task) =&gt; task.status === &quot;Completed&quot;); // fetch tasks that are completed by the developer
+     const todoTaskList = taskList.filter((task) =&gt; task.status === &quot;To-Do&quot;); // fetch tasks that are not yet started by the developer
+     const inProgressTaskList = taskList.filter((task) =&gt; task.completed === &quot;In-Progress&quot;); // fetch tasks that are in progress by the developer
+     return {
+       &quot;Id&quot;: developer.id,
+       &quot;Name&quot;: developer.name,
+       &quot;Email&quot;: developer.email,
+       &quot;Total Tasks&quot;: taskList.length,
+       &quot;To-Do Tasks&quot;: todoTaskList.length,
+       &quot;In Progress Tasks&quot;: inProgressTaskList.length,
+       &quot;Completed Tasks&quot;: completedTaskList.length
+     };
+    })
+ }
+}
+</code></pre>
+<p>The <code>getAllDeveloperTaskStatus</code> function does the following:</p>
+<ul>
+<li>Reads all the developers’ data</li>
+<li>Iterates for each developer record</li>
+<li>Scans the tasklist to fetch the developer-related tasks<ul>
+<li>Based on task status (TO-DO, In-Progress, and Completed)</li>
+</ul>
+</li>
+<li>Generate a response that gives a cumulative task breakup for each task status for each developer</li>
+</ul>
+<p>To display the response generated by<code>getAllDeveloperTaskStatus</code> we'll bind it to a widget.</p>
+<ul>
+<li>Navigate to <code>Page</code> &gt;&gt; Select <a href="../../../reference/widgets/table/"><code>Table</code></a> widget in Widgets Tab &gt;&gt; Drag it onto the canvas.</li>
+<li>Select the <code>Table</code> Widget on the canvas</li>
+<li>In the <code>Property Pane</code> on right side add the code <code>{{Utils.getAllDeveloperTaskStatus()}}</code> in <code>Table Data</code> property.</li>
+</ul>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/HJGOf5ez4eY">https://youtu.be/HJGOf5ez4eY</a>" %}
+Add a Table Widget to display data</p>
+<p>The <a href="../../../reference/widgets/table/">table widget</a> will show the data as shown in the below screenshot.</p>
+<p><img alt="Display data in a table widget" src="../../../.gitbook/assets/JavaScript Editor  Write Complex Code  Bind JS Function Response to Table Widget.png" /></p>
+<p><strong>Update Developer Information</strong></p>
+<p>Let’s add another function where you’ll be able to select a developer record and update the information.</p>
+<p>To achieve this, add a new column to the <a href="../../../reference/widgets/table/">table widget</a> and select the <code>Column Type</code> as an <code>icon button</code> type that will open a modal window.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/H85pm7Ae_U8">https://youtu.be/H85pm7Ae_U8</a>" %}
+How to add an edit column to the table widget?</p>
+<p>Now that the <code>Edit</code> column is added to the table let’s add a modal to fetch the <code>developer</code> information like <code>Name</code> and <code>Email</code>.</p>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/lqC0MzK4s5g">https://youtu.be/lqC0MzK4s5g</a>" %}
+How to add a modal to edit a developer's details?</p>
+<p>Navigate to Explorer &gt;&gt; Select Utils &gt;&gt; Add the code snippet for <code>updateUserData()</code> after <code>getAllDeveloperTaskStatus()</code>.</p>
+<pre><code>export default {
+    getAllDeveloperTaskStatus: () =&gt; {
+        ...// code block for getAllDeveloperTaskStatus
+    }, 
+    updateUserData: () =&gt; {
+        // Construct new user's data
+        const newUserData = {
+            ...Table1.selectedRow,
+            name: devName.text,
+            email: devEmail.text,
+        }
+        // Run updateDeveloperDetails query     
+        updateDeveloperDetails.run(
+            // on successful execution of updateDeveloperDetails run developers to fetch updated data 
+            async () =&gt; {
+                    await developers.run();
+                    closeModal(&quot;editModal&quot;);
+                    showAlert(&quot;Developer Details are updated successfully!&quot;);
+                },
+                // On Error, close the modal and show an error toast            
+                (e) =&gt; {
+                    closeModal(&quot;editModal&quot;)
+                    showAlert(&quot;An error occurred while updating the developer details!&quot;);
+                    if (e.statusCode === 401) {
+                        navigateTo(&quot;Page1&quot;);
+                    }
+                },
+                // Params Object    
+                newUserData)
+    }
+}
+</code></pre>
+<p>The <code>updateUserData</code> function does the following:</p>
+<ul>
+<li>Create the dynamic data that is updated by the user in <code>editModal</code> in <code>newUserData</code> JSON</li>
+<li>Executes query <code>updateDeveloperDetails</code></li>
+<li>On successful execution of the query:<ul>
+<li>Calls <code>developers</code> query to fetch the updated developer details</li>
+<li>Shows a success toast to the user</li>
+<li>Closes the <code>editModal</code></li>
+</ul>
+</li>
+<li>On error or failed execution of the query<ul>
+<li>Shows an error toast to the user</li>
+<li>Closes the <code>editModal</code></li>
+</ul>
+</li>
+</ul>
+<p>Rename the <code>Confirm</code> button to <code>Update</code> and bind the function <code>updateUserData</code> to its <code>onClick()</code> event. You can bind the function call by using <code>{{Utils.updateUserData()}}</code>.</p>
+<p><img alt="How to bind function call to an onClick event?" src="../../../.gitbook/assets/JavaScript Editor  Edit Modal  Bind UpdateUser Function Call on Update Button.png" /></p>
+<p>When you'll hit the <code>Update</code> button, the <code>updateUserData</code> function gets executed that updates the developer information and refreshes the developer table to fetch the updated information.</p>
+<p><strong>Add Permissions</strong></p>
+<p>As you want only the admins to access the Dashboard, let’s create another function for access control. The function will contain a list of users’ emails who will have access to update data in the table. Let’s call this function <code>isAdmin</code>.</p>
+<p>Add the code snippet for <code>isAdmin()</code> and <code>adminsList</code> to the <code>Utils</code> JS Object.</p>
+<pre><code>export default {
+    adminsList: [&quot;admin1@yourdomain.com&quot;, &quot;admin2@yourdomain.com&quot;, &quot;admin3@yourdomain.com&quot;],
+    getAllDeveloperTaskStatus() =&gt; {
+        ... // code block for getAllDeveloperTaskStatus
+    },
+    updateUsersData() =&gt; {
+        ... // code block for updateUserData
+    },
+    isAdmin: (email) =&gt; {
+        if (this.adminList.indexOf(appsmith.user.email) &gt; -1) { // check if the logged in user is an admin
+            return true;
+        }
+        return false;
+    }
+}
+</code></pre>
+<p>The final function will look as below:</p>
+<pre><code>export default {
+    //the allowed list of admin's email
+    adminsList: [&quot;admin1@yourdomain.com&quot;, &quot;admin2@yourdomain.com&quot;, &quot;admin3@yourdomain.com&quot;],
+    getAllDeveloperTaskStatus: () =&gt; {
+        return developers.data.map((developer) =&gt; {
+            const developerId = developer.id;
+            const taskList = developerTaskStatus.data.filter((alltask) =&gt; alltask.userId === String(developerId)); // fetch all the tasks for the given developer
+            const completedTaskList = taskList.filter((task) =&gt; task.status === &quot;Completed&quot;); // fetch tasks that are completed by the developer
+            const todoTaskList = taskList.filter((task) =&gt; task.status === &quot;To-Do&quot;); // fetch tasks that are not yet started by the developer
+            const inProgressTaskList = taskList.filter((task) =&gt; task.completed === &quot;In-Progress&quot;); // fetch tasks that are in progress by the developer
+            return {
+                &quot;Id&quot;: developer.id,
+                &quot;Name&quot;: developer.name,
+                &quot;Email&quot;: developer.email,
+                &quot;Total Tasks&quot;: taskList.length,
+                &quot;To-Do Tasks&quot;: todoTaskList.length,
+                &quot;In Progress Tasks&quot;: inProgressTaskList.length,
+                &quot;Completed Tasks&quot;: completedTaskList.length
+            };
+        })
+    },
+    updateUserData: () =&gt; {
+        // Construct new user's data
+        const newUserData = {
+            ...Table1.selectedRow,
+            name: devName.text,
+            email: devEmail.text,
+        }
+        // Run updateDeveloperDetails query     
+        updateDeveloperDetails.run(
+            // on successful execution of updateDeveloperDetails run developers to fetch updated data  
+            async () =&gt; {
+                    await developers.run();
+                    closeModal(&quot;editModal&quot;);
+                    showAlert(&quot;Developer Details are updated successfully!&quot;);
+                },
+                // On Error, close the modal and show an error toast        
+                (e) =&gt; {
+                    closeModal(&quot;editModal&quot;)
+                    showAlert(&quot;An error occurred while updating the developer details!&quot;);
+                    if (e.statusCode === 401) {
+                        navigateTo(&quot;Page1&quot;);
+                    }
+                },
+                // Params Object    
+                newUserData)
+
+    },
+    isAdmin: async () =&gt; {
+        if (this.adminsList.indexOf(appsmith.user.email) &gt; -1) {
+            return true;
+        }
+        navigateTo(&quot;Page2&quot;);
+        return false;
+    }
+}
+</code></pre>
+<p _="%" endembed="endembed">{% embed url="<a href="https://youtu.be/cuoUVqzhCMo">https://youtu.be/cuoUVqzhCMo</a>" %}
+A user who is not an admin is taken to a no permissions page</p>
+<p>Only the users with email added to the <code>adminList</code> will be able to access the dashboard and do the updates.</p>
+<p>With the <a href="asynchronous-javascript-function-settings/">Async function settings</a>, you can bind the <code>isAdmin</code> function to <code>RUN ON PAGE LOAD</code>. The execution of <code>IsAdmin</code> on Page load ensures the validation of the user’s email against the <code>adminList</code> for the logged-in user should happen on the page load. If the logged-in user's email is present in the <code>adminsList</code>, the user can access the Dashboard. If not, the user navigates to the access denied page that shows a message:</p>
+<p _="%" endhint="endhint">{% hint style="info" %}
+You do not have permission to access the Dashboard.</p>
+<h2 id="current-limitations">Current Limitations<a class="headerlink" href="#current-limitations" title="Permanent link">&para;</a></h2>
+<p>As the JavaScript Editor is in its BETA, there are a few limitations:</p>
+<ul>
+<li>At the moment, you cannot use <code>JS Objects</code> across pages. We are working to enable this functionality in the future. You can subscribe to<a href="https://github.com/appsmithorg/appsmith/issues/1751"> the issue</a> and follow the progress.</li>
+<li>You cannot define variables and functions outside of export default { }. In future iterations, we will allow you to write and export only selected variables/functions from a <code>JS Object</code>.</li>
+</ul>
+<p><img alt="Async Function" src="../../../.gitbook/assets/JS_editor_async_function.png" /></p>
+<p>If a function is async, i.e., if it returns a promise, it cannot be called on the fields incompatible with the return type, such as the default text property of the <a href="../../../reference/widgets/text.md">text</a> widget. For example, in the above screenshot <code>executeQuery</code> returns <code>Api1.run()</code> promise and hence is an <a href="./#asynchronous">async function</a>. You can call <code>executeQuery</code> or similar functions only from <code>trigger</code> or <code>event</code> properties such as <code>OnClick</code>.</p>
+
+
+
+
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes", "header.autohide"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+  
+      <script src="../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  <script src="../../../assets/javascripts/bundle.d665d539.min.js"></script>
+
+  </body>
+</html>
