@@ -64,8 +64,4 @@ All of the widgets which previously did not support theming will now be ready fo
 Widgets which are deprecated will not support theming**.**
 {% endhint %}
 
-## **Impact of themes on a widget**
 
-Within each widget's style properties, there are some properties that the theme can control. When you drag a new widget to the canvas, it will automatically sync with the theme values.
-
-You can choose to override the values from the widget, and once you do, there is an indication with an "Orange dot" that the value has changed from the theme's value. You can go back to the theme's value using the "Reset value" icon present on the right end of the property.
